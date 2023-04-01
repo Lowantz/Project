@@ -3,13 +3,13 @@ package model.product.type_of_products;
 import model.product.Product;
 import model.product.TypeOfProduct;
 
-public class DigitalProduct extends Product {
+public abstract class DigitalProduct extends Product {
     private int weight;
     private int dimensions;
 
-    public DigitalProduct(String id, String name, long price, Boolean available, int averageScore,
-                          TypeOfProduct typeOfProduct, int weight, int dimensions) {
-        super(id, name, price, available, averageScore, typeOfProduct);
+    public DigitalProduct( String name, long price,
+                           int weight, int dimensions,int availableProducts) {
+        super( name, price, TypeOfProduct.DIGITAL,availableProducts);
         this.weight = weight;
         this.dimensions = dimensions;
     }

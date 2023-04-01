@@ -14,4 +14,10 @@ public abstract class User {
         this.pass = pass;
         this.roll = roll;
     }
+    public String getUserName(){
+        return userName;
+    }
+    public String getPass(){
+        return pass;
+    }
 }

@@ -7,8 +7,8 @@ public class NoteBook extends Stationary {
     private int paperNumber;
     private String paperType;
 
-    public NoteBook(String id, String name, long price, Boolean available, int averageScore, TypeOfProduct typeOfProduct, String country, int paperNumber, String paperType) {
-        super(id, name, price, available, averageScore, typeOfProduct, country);
+    public NoteBook(String name, long price, String country, int paperNumber, String paperType,int availableProducts) {
+        super(name, price, country,availableProducts);
         this.paperNumber = paperNumber;
         this.paperType = paperType;
     }

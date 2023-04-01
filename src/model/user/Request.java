@@ -10,4 +10,10 @@ public class Request {
         this.text = text;
         this.costumer = costumer;
     }
+    public void setAcceptStatus(Boolean bool){
+        acceptStatus = bool;
+    }
+    public String getText(){
+        return text;
+    }
 }

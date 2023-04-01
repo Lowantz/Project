@@ -7,8 +7,9 @@ public class SSD extends SaveData {
     private int readingSpeed;
     private int writingSpeed;
 
-    public SSD(String id, String name, long price, Boolean available, int averageScore, TypeOfProduct typeOfProduct, int weight, int dimensions, int capacity, int readingSpeed, int writingSpeed) {
-        super(id, name, price, available, averageScore, typeOfProduct, weight, dimensions, capacity);
+    public SSD( String name, long price,
+                int weight, int dimensions, int capacity, int readingSpeed, int writingSpeed,int availableProducts) {
+        super( name, price, weight, dimensions, capacity,availableProducts);
         this.readingSpeed = readingSpeed;
         this.writingSpeed = writingSpeed;
     }

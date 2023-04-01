@@ -1,5 +1,9 @@
+import view.StartPage;
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Boolean start = true;
+        while (start) {
+            start = StartPage.page1();
+        }
     }
 }

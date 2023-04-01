@@ -6,8 +6,8 @@ import model.product.type_of_products.Vehicles;
 public class Bike extends Vehicles {
     private BikeType bikeType;
 
-    public Bike(String id, String name, long price, Boolean available, int averageScore, TypeOfProduct typeOfProduct, String companyName, BikeType bikeType) {
-        super(id, name, price, available, averageScore, typeOfProduct, companyName);
+    public Bike(String name, long price,  String companyName, BikeType bikeType,int availableProducts) {
+        super(name, price,  companyName,availableProducts);
         this.bikeType = bikeType;
     }
 }
