@@ -60,4 +60,7 @@ public abstract class Product {
     public void setAvailable (Boolean available){
         this.available = available;
     }
+    public ArrayList<Comment> getComments(){
+        return comments;
+    }
 }

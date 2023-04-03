@@ -22,4 +22,7 @@ public class Admin extends User {
     public static ArrayList<Request> getRequests (){
         return requests;
     }
+    public static void setRequests(Request request){
+        requests.remove(request);
+    }
 }

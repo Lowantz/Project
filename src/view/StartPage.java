@@ -13,6 +13,22 @@ public class StartPage {
             case 1:
                 LoginPage.loginPageAdmin();
                 break;
+            case 2:
+                System.out.println("1-Login \n2-Signup");
+                int answer1 = sc.nextInt();
+                sc.nextLine();
+                switch (answer1) {
+                    case 1:
+                        LoginPage.loginPageCostumer();
+                        break;
+                    case 2:
+                        SighupPage.signupPage();
+                        break;
+                    default:
+                        System.out.println("error !");
+                        break;
+                }
+                break;
             default:
                 System.out.println("error !");
                 break;

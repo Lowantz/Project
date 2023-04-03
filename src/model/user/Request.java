@@ -1,19 +1,41 @@
 package model.user;
 
-public class Request {
-    private Boolean acceptStatus;
-    private String text;
-    private User costumer;
+import model.Comment;
+import model.product.Product;
+import model.user.user_types.Costumer;
 
-    public Request(Boolean acceptStatus, String text, User costumer) {
-        this.acceptStatus = acceptStatus;
-        this.text = text;
+public class Request {
+    private static int counter = 1;
+    private Product product;
+    private int requestCode;
+    private Comment comment;
+    private long credit;
+    private RequestType requestType;
+    private Costumer costumer;
+
+    public Request( RequestType requestType, Costumer costumer) {
+        this.requestType = requestType;
         this.costumer = costumer;
+        this.requestCode = counter;
+        counter ++;
     }
-    public void setAcceptStatus(Boolean bool){
-        acceptStatus = bool;
+
+    public RequestType getRequestType(){
+        return requestType;
     }
-    public String getText(){
-        return text;
+    public int getRequestCode(){
+        return requestCode;
+    }
+    public long getCredit(){
+        return credit;
+    }
+    public Comment getComment(){
+        return comment;
+    }
+    public Costumer getCostumer(){
+        return costumer;
+    }
+    public Product getProduct(){
+        return product;
     }
 }

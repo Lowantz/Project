@@ -14,10 +14,26 @@ public abstract class User {
         this.pass = pass;
         this.roll = roll;
     }
-    public String getUserName(){
+
+    public String getUserName() {
         return userName;
     }
-    public String getPass(){
+
+    public String getPass() {
         return pass;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public String toString() {
+        String string = "username:" + userName +" | email:" + email + " | phone:" + phone + " | pass:" + pass + " | roll:" + roll.toString()+" | ";
+        return string;
     }
 }

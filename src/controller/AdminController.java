@@ -12,15 +12,13 @@ import model.product.productlist.pencil.PencilType;
 import model.product.productlist.save_data_products.Flash;
 import model.product.productlist.save_data_products.SSD;
 import model.user.Request;
+import model.user.RequestType;
 import model.user.user_types.Admin;
 import model.user.user_types.Costumer;
 
 import java.util.ArrayList;
 
 public class AdminController {
-    public static void acceptRequest(Request request) {
-        request.setAcceptStatus(true);
-    }
 
     public static void addProduct(String[] parts,int i) {
         switch (parts[i+1]) {
@@ -150,15 +148,39 @@ public class AdminController {
             }
         }
     }
-    public static void viewCostumers(ArrayList<Costumer> costumers) {
-        for (Costumer a : costumers ){
-            System.out.println("username : "+a.getUserName()+"\n");
+    public static void acceptRequest(String[] parts) {
+        for (String a : parts) {
+            int code = Integer.parseInt(a);
+            for (Request request : Admin.getRequests()) {
+                if (request.getRequestCode() == code){
+                    if (request.getRequestType() == RequestType.Signup) {
+                        CostumerController.getCostumers().add(request.getCostumer());
+                    }
+                    if (request.getRequestType() == RequestType.Comment) {
+                        request.getProduct().getComments().add(request.getComment());
+                    }
+                    if (request.getRequestType() == RequestType.RaiseCredit) {
+                       long credit = request.getCostumer().getCredit();
+                       credit = credit + request.getCredit();
+                       request.getCostumer().setCredit(credit);
+                    }
+                    Admin.getRequests().remove(request);
+                    break;
+                }
+            }
         }
     }
-    public static void viewRequests(ArrayList <Request> requests ) {
-        for (Request a : requests ){
-            System.out.println("request text : "+a.getText()+"\n");
+    public static void rejectRequest(String[] parts) {
+        int code;
+        for (String a : parts) {
+            code = Integer.parseInt(a);
+            for (Request request : Admin.getRequests()) {
+                if (request.getRequestCode() == code){
+                    Admin.getRequests().remove(request);
+                    break;
+                }
+            }
         }
+    }
 
-    }
 }

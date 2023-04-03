@@ -1,11 +1,12 @@
 package view;
-
 import controller.AdminController;
 import controller.CostumerController;
+import model.user.Request;
+import model.user.RequestType;
 import model.user.user_types.Admin;
-
+import model.user.user_types.Costumer;
+import java.util.ArrayList;
 import java.util.Scanner;
-
 public class AdminView {
     static Scanner sc = new Scanner(System.in);
     public static void adminView() {
@@ -33,13 +34,15 @@ public class AdminView {
                     }
                     switch (parts[0]) {
                         case "ShowCostumers" :
-                            AdminController.viewCostumers(CostumerController.getCostumers());
+                            viewCostumers(CostumerController.getCostumers());
                             break;
                         case "ShowRequests" :
-                            AdminController.viewRequests(Admin.getRequests());
+                            viewRequests(Admin.getRequests());
                             break;
                     }
-
+                    if (!parts[0].equals("ShowRequests") && !parts[0].equals("ShowCostumers") && !parts[0].equals("Edit") && !parts[0].equals("Remove") && !parts[0].equals("Add") ){
+                        System.out.println("error!");
+                    }
                     break;
                 case 2:
                     System.out.println("a");
@@ -50,6 +53,31 @@ public class AdminView {
             sc.nextLine();
             if (answer1 == 1)
                 login = false;
+        }
+    }
+    public static void viewCostumers(ArrayList<Costumer> costumers) {
+        for (Costumer a : costumers ){
+            System.out.println(a.toString()+"\n");
+        }
+    }
+    public static void viewRequests(ArrayList <Request> requests ) {
+        for (Request a : requests ){
+            if( a.getRequestType() == RequestType.Signup){
+                System.out.println("Signup request : \n"+a.getCostumer().toString()+
+                        "\nrequest code :"+a.getRequestCode()+"\n");
+            }
+        }
+        if ( requests.size() == 0 )
+            System.out.println(" no request !\n");
+        else {
+            System.out.println("enter the codes that you want to accept");
+            String answer = sc.nextLine();
+            String[] parts = answer.split("\\s+");
+            AdminController.acceptRequest(parts);
+            System.out.println("enter the codes that you want to reject");
+            String answer1 = sc.nextLine();
+            String[] parts1 = answer1.split("\\s+");
+            AdminController.rejectRequest(parts1);
         }
     }
 }

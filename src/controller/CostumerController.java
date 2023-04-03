@@ -9,4 +9,9 @@ public class CostumerController {
     public static ArrayList <Costumer> getCostumers (){
         return costumers;
     }
+    public static Costumer addCostumers (String userName, String email, String phone, String pass){
+        Costumer costumer = new Costumer(userName,email,phone,pass);
+        return costumer;
+    }
+
 }
