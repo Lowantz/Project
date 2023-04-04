@@ -27,4 +27,7 @@ public class Costumer extends User {
     public void setCredit(long credit){
         this.credit = credit;
     }
+    public ArrayList<Product> getToBuyList(){
+        return toBuyList;
+    }
 }

@@ -10,4 +10,12 @@ public class Pen extends Stationary {
         super(name, price,  country,availableProducts);
         this.color = color;
     }
+    public String getColor(){
+        return color;
+    }
+    @Override
+    public String toString () {
+        String string = super.toString()+"color:"+color;
+        return string;
+    }
 }

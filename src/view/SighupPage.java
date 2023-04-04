@@ -12,13 +12,15 @@ import java.util.regex.Pattern;
 
 public class SighupPage {
     static Scanner sc = new Scanner(System.in);
-    public static void signupPage() {
+    public static Costumer signupPage() {
         System.out.println("Password must contain at least one digit [0-9].\n" +
                 "Password must contain at least one lowercase Latin character [a-z].\n" +
                 "Password must contain at least one uppercase Latin character [A-Z].\n" +
                 "Password must contain at least one special character like ! @ # & ( ).\n" +
                 "Password must contain a length of at least 8 characters and a maximum of 20 characters.");
         Boolean signupStatus = true;
+        String finalUsername ="";
+        String finalPass = "";
         while (signupStatus) {
             System.out.println("please enter your username, email, phone and pass :\n");
             String username = sc.nextLine();
@@ -51,7 +53,10 @@ public class SighupPage {
                         if (signupStatus){
                             Request request = new Request(RequestType.Signup,CostumerController.addCostumers(username,email,phone,pass));
                             Admin.getRequests().add(request);
-                            System.out.println("signup done ! please restart the program and login !");
+                            System.out.println("signup done !");
+                            finalUsername = username;
+                            finalPass = pass;
+                            LoginPage.loginPageAdmin();
                             signupStatus = false;
                         }
                         else {
@@ -64,5 +69,6 @@ public class SighupPage {
             } else
                 System.out.println("invalid email !");
         }
+        return CostumerController.searchCostumers(finalUsername,finalPass);
     }
 }

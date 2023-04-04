@@ -13,4 +13,9 @@ public abstract class Food extends Product {
         this.dateOfManufacture = dateOfManufacture;
         this.expirationDate = expirationDate;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"date Of Manufacture:"+dateOfManufacture+" | expiration Date:"+expirationDate+" | ";
+        return string;
+    }
 }

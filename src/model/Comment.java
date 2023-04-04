@@ -16,4 +16,9 @@ public class Comment {
         this.purchaseStatus = purchaseStatus;
         this.status = status;
     }
+    @Override
+    public String toString () {
+        String a = costumer.getUserName()+" : "+text+"\n";
+        return a;
+    }
 }

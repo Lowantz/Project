@@ -10,4 +10,9 @@ public abstract class SaveData extends DigitalProduct {
         super( name, price, weight, dimensions,availableProducts);
         this.capacity = capacity;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"capacity:"+capacity;
+        return string;
+    }
 }

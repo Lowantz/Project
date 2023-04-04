@@ -13,4 +13,9 @@ public class SSD extends SaveData {
         this.readingSpeed = readingSpeed;
         this.writingSpeed = writingSpeed;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"reading Speed:"+readingSpeed+" | writing Speed:"+writingSpeed;
+        return string;
+    }
 }

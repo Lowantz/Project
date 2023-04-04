@@ -45,8 +45,20 @@ public abstract class Product {
     public String getName (){
         return name;
     }
+    public String getId (){
+        return Id;
+    }
+    public TypeOfProduct getTypeOfProduct(){
+        return typeOfProduct;
+    }
     public long getPrice (){
         return price;
+    }
+    public int getAvailableProducts(){
+        return availableProducts;
+    }
+    public int getAverageScore(){
+        return averageScore;
     }
     public void setName (String name){
         this.name = name;
@@ -62,5 +74,14 @@ public abstract class Product {
     }
     public ArrayList<Comment> getComments(){
         return comments;
+    }
+    @Override
+    public String toString () {
+        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | status:" + available + " | averageScore:" + averageScore+" | Type :"+typeOfProduct+" | ";
+        return string;
+    }
+    public String toStringList () {
+        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | status:" + available.toString();
+        return string;
     }
 }

@@ -23,6 +23,9 @@ public class Request {
     public RequestType getRequestType(){
         return requestType;
     }
+    public void setCredit(long credit){
+        this.credit = credit;
+    }
     public int getRequestCode(){
         return requestCode;
     }

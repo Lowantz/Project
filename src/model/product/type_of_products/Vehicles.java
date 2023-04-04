@@ -10,4 +10,9 @@ public abstract class Vehicles extends Product {
         super( name, price, TypeOfProduct.VEHICLES,availableProducts);
         this.companyName = companyName;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"company Name:"+companyName+" | ";
+        return string;
+    }
 }

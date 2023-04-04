@@ -11,6 +11,7 @@ public class CostumerView {
             case 1:
                 break;
             case 2:
+                ProductsView.productsView(costumer);
                 break;
             case 3:
                 break;

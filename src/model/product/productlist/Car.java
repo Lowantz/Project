@@ -12,4 +12,9 @@ public class Car extends Vehicles {
         this.auto = auto;
         this.capacityOfCarEngine = capacityOfCarEngine;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"auto:"+auto.toString()+" | capacity Of Car Engine:"+capacityOfCarEngine;
+        return string;
+    }
 }

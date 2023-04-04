@@ -10,4 +10,9 @@ public class Bike extends Vehicles {
         super(name, price,  companyName,availableProducts);
         this.bikeType = bikeType;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"bikeType:"+bikeType.toString();
+        return string;
+    }
 }

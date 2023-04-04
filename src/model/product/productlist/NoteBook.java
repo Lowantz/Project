@@ -12,4 +12,9 @@ public class NoteBook extends Stationary {
         this.paperNumber = paperNumber;
         this.paperType = paperType;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"paperNumber:"+paperNumber+" | paperType:"+paperType;
+        return string;
+    }
 }

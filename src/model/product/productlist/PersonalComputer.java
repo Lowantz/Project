@@ -12,4 +12,13 @@ public class PersonalComputer extends DigitalProduct {
         this.cpuModel = cpuModel;
         this.ram = ram;
     }
+    public String getCpuModel(){
+        return cpuModel;
+    }
+
+    @Override
+    public String toString () {
+        String string = super.toString()+"cpuModel:"+cpuModel+" | ram:"+ram;
+        return string;
+    }
 }

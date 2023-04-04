@@ -10,4 +10,9 @@ public abstract class Stationary extends Product {
         super( name, price, TypeOfProduct.STATIONARY,availableProducts);
         this.country = country;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"country:"+country+" | ";
+        return string;
+    }
 }

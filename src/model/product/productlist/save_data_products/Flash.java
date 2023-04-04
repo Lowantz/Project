@@ -9,4 +9,9 @@ public class Flash extends SaveData {
         super(name, price,  weight, dimensions, capacity,availableProducts);
         this.usbVersion = usbVersion;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"usb Version:"+usbVersion;
+        return string;
+    }
 }

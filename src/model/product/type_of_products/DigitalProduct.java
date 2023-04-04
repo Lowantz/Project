@@ -13,4 +13,9 @@ public abstract class DigitalProduct extends Product {
         this.weight = weight;
         this.dimensions = dimensions;
     }
+    @Override
+    public String toString () {
+        String string = super.toString()+"weight:"+weight+" | dimensions:"+dimensions+" | ";
+        return string;
+    }
 }

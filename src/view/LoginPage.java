@@ -10,7 +10,7 @@ public class LoginPage {
     static Scanner sc = new Scanner(System.in);
 
     public static void loginPageAdmin() {
-        System.out.println("please enter your username and password :");
+        System.out.println("Admin Login :\nplease enter your username and password :");
         String userName = sc.nextLine();
         String pass = sc.nextLine();
         if (userName.equals(Admin.getAdmin().getUserName()) && pass.equals(Admin.getAdmin().getPass())) {
@@ -20,7 +20,7 @@ public class LoginPage {
             System.out.println("wrong pass or username");
     }
     public static void loginPageCostumer() {
-        System.out.println("please enter your username and password :");
+        System.out.println("costumer Login :\nplease enter your username and password :");
         String userName = sc.next();
         String pass = sc.next();
         Boolean loginStatus = false;

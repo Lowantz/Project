@@ -1,6 +1,7 @@
 package controller;
 
 import model.product.Product;
+import model.product.TypeOfProduct;
 import model.product.productlist.Car;
 import model.product.productlist.NoteBook;
 import model.product.productlist.Pen;
@@ -97,6 +98,7 @@ public class AdminController {
                 }
                 Pencil pencil = new Pencil(parts[i+2], price6, parts[i+4], pencilType,number6);
                 Admin.getProducts().add(pencil);
+                break;
             case "Bike":
                 long price7 = Long.parseLong(parts[i+3]);
                 int number7= Integer.parseInt(parts[i+6]);
@@ -127,6 +129,7 @@ public class AdminController {
         for (Product a : Admin.getProducts()) {
             if (a.getName().equals(parts[i+1]) && a.getPrice() == price){
                 Admin.getProducts().remove(a);
+                break;
             }
         }
     }
@@ -145,6 +148,7 @@ public class AdminController {
                     available = false;
                 }
                 a.setAvailable(available);
+                break;
             }
         }
     }
@@ -174,7 +178,7 @@ public class AdminController {
         int code;
         for (String a : parts) {
             code = Integer.parseInt(a);
-            for (Request request : Admin.getRequests()) {
+            for (Request request : Admin.getRequests()){
                 if (request.getRequestCode() == code){
                     Admin.getRequests().remove(request);
                     break;
@@ -182,5 +186,100 @@ public class AdminController {
             }
         }
     }
+    public static Product search (String name){
+        for (Product a : Admin.getProducts()){
+            if(a.getName().equals(name)){
+                return a;
+            }
+        }
+        return null;
+    }
+    public static Product searchID (String Id){
+        for (Product a : Admin.getProducts()){
+            if(a.getId().equals(Id)){
+                return a;
+            }
+        }
+        return null;
+    }
+    public static String filterPrice (long min,long max){
+        StringBuilder result = new StringBuilder();
+        for (Product a : Admin.getProducts()){
+            if(a.getPrice()>= min && a.getPrice()<= max ){
+                result.append(a.toStringList());
+                result.append("\n");
+            }
 
+        }
+        return result.toString();
+    }
+    public static String filterAvailable (){
+        StringBuilder result = new StringBuilder();
+        for (Product a : Admin.getProducts()){
+            if(!(a.getAvailableProducts()==0)) {
+                result.append(a.toStringList());
+                result.append("\n");
+            }
+        }
+        return result.toString();
+    }
+    public static String filterScore (long min,long max){
+        StringBuilder result = new StringBuilder();
+        for (Product a : Admin.getProducts()){
+            if(a.getAverageScore()>= min && a.getAverageScore()<= max ) {
+                result.append(a.toStringList());
+                result.append("\n");
+            }
+        }
+        return result.toString();
+    }
+    public static String filterType (String typeOfProduct){
+        TypeOfProduct b = TypeOfProduct.DIGITAL;
+        switch (typeOfProduct){
+            case "DIGITAL":
+                b = TypeOfProduct.DIGITAL;
+                break;
+            case "FOOD":
+                b = TypeOfProduct.FOOD;
+                break;
+            case "VEHICLES":
+                b = TypeOfProduct.VEHICLES;
+                break;
+            case "STATIONARY":
+                b = TypeOfProduct.STATIONARY;
+                break;
+        }
+        StringBuilder result = new StringBuilder();
+        for (Product a : Admin.getProducts()){
+            if(a.getTypeOfProduct() == b) {
+                result.append(a.toStringList());
+                result.append("\n");
+            }
+        }
+        return result.toString();
+    }
+    public static String filterCpu (String cpu) {
+        StringBuilder result = new StringBuilder();
+        for (Product a : Admin.getProducts()) {
+            if (a instanceof PersonalComputer) {
+                if (((PersonalComputer) a).getCpuModel().equals(cpu)) {
+                    result.append(a.toStringList());
+                    result.append("\n");
+                }
+            }
+        }
+        return result.toString();
+    }
+    public static String filterColor (String color) {
+        StringBuilder result = new StringBuilder();
+        for (Product a : Admin.getProducts()) {
+            if (a instanceof Pen) {
+                if (((Pen) a).getColor().equals(color)) {
+                    result.append(a.toStringList());
+                    result.append("\n");
+                }
+            }
+        }
+        return result.toString();
+    }
 }

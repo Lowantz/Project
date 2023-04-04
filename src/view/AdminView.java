@@ -56,8 +56,12 @@ public class AdminView {
         }
     }
     public static void viewCostumers(ArrayList<Costumer> costumers) {
-        for (Costumer a : costumers ){
-            System.out.println(a.toString()+"\n");
+        if(costumers.size() == 0)
+            System.out.println("no costumers!\n");
+        else {
+            for (Costumer a : costumers) {
+                System.out.println(a.toString() + "\n");
+            }
         }
     }
     public static void viewRequests(ArrayList <Request> requests ) {
