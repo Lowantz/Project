@@ -16,18 +16,22 @@ public class Comment {
         this.purchaseStatus = purchaseStatus;
         this.status = status;
     }
+
     @Override
-    public String toString () {
-        String a = costumer.getUserName()+" : "+text+"\n";
+    public String toString() {
+        String a = costumer.getUserName() + " : " + text + "\n";
         return a;
     }
-    public String getText(){
+
+    public String getText() {
         return text;
     }
-    public String getProductId(){
+
+    public String getProductId() {
         return productId;
     }
-    public void setStatus(CommentStatus commentStatus){
+
+    public void setStatus(CommentStatus commentStatus) {
         this.status = commentStatus;
     }
 }

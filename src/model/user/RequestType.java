@@ -1,5 +1,5 @@
 package model.user;
 
 public enum RequestType {
-    Signup,Comment,RaiseCredit
+    Signup, Comment, RaiseCredit
 }

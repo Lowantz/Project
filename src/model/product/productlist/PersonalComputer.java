@@ -7,18 +7,19 @@ public class PersonalComputer extends DigitalProduct {
     private String cpuModel;
     private int ram;
 
-    public PersonalComputer(String name, long price, int weight, int dimensions, String cpuModel, int ram,int availableProducts) {
-        super(name, price, weight, dimensions,availableProducts);
+    public PersonalComputer(String name, long price, int weight, int dimensions, String cpuModel, int ram, int availableProducts) {
+        super(name, price, weight, dimensions, availableProducts);
         this.cpuModel = cpuModel;
         this.ram = ram;
     }
-    public String getCpuModel(){
+
+    public String getCpuModel() {
         return cpuModel;
     }
 
     @Override
-    public String toString () {
-        String string = super.toString()+"cpuModel:"+cpuModel+" | ram:"+ram;
+    public String toString() {
+        String string = super.toString() + "cpuModel:" + cpuModel + " | ram:" + ram;
         return string;
     }
 }

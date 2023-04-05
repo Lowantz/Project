@@ -13,35 +13,43 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CostumerController {
-    private static ArrayList <Costumer> costumers = new ArrayList<>();
-    public static ArrayList <Costumer> getCostumers (){
+    private static ArrayList<Costumer> costumers = new ArrayList<>();
+
+    public static ArrayList<Costumer> getCostumers() {
         return costumers;
     }
-    public static Costumer addCostumers (String userName, String email, String phone, String pass){
-        Costumer costumer = new Costumer(userName,email,phone,pass);
+
+    public static Costumer addCostumers(String userName, String email, String phone, String pass) {
+        Costumer costumer = new Costumer(userName, email, phone, pass);
         return costumer;
     }
-    public static String addProduct (Costumer costumer,Product product){
+
+    public static String addProduct(Costumer costumer, Product product) {
         if (costumer == null)
             return "please signup first!";
         else {
-            costumer.getToBuyList().add(product);
-            return "add done!";
+            if (product.getAvailableProducts() == 0) {
+                return "product is not available!\n";
+            } else {
+                costumer.getToBuyList().add(product);
+                return "add done!";
+            }
         }
     }
-    public static void removeProduct (Costumer costumer,String Id){
-        for (Product product : costumer.getToBuyList()){
-            if (product.getId().equals(Id)){
+
+    public static void removeProduct(Costumer costumer, String Id) {
+        for (Product product : costumer.getToBuyList()) {
+            if (product.getId().equals(Id)) {
                 costumer.getToBuyList().remove(product);
                 break;
             }
         }
     }
-    public static String buy(Costumer costumer){
-        if (costumer.getToBuyList().size() == 0){
+
+    public static String buy(Costumer costumer) {
+        if (costumer.getToBuyList().size() == 0) {
             return "Purchase List is empty!";
-        }
-        else {
+        } else {
             long price = 0;
             for (Product a : costumer.getToBuyList()) {
                 price = price + a.getPrice();
@@ -63,50 +71,53 @@ public class CostumerController {
                 return "not enough credit";
         }
     }
-    public static Costumer searchCostumers (String userName, String pass){
-        for (Costumer a : costumers){
-            if(a.getUserName().equals(userName)&&a.getPass().equals(pass)) {
+
+    public static Costumer searchCostumers(String userName, String pass) {
+        for (Costumer a : costumers) {
+            if (a.getUserName().equals(userName) && a.getPass().equals(pass)) {
                 return a;
             }
         }
         return null;
     }
-    public static String edit (String phone,String email,String pass,Costumer costumer1){
+
+    public static String edit(String phone, String email, String pass, Costumer costumer1) {
         Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@(gmail|yahoo)\\.com$");
         Matcher matcher = pattern.matcher(email);
         Pattern pattern1 = Pattern.compile("09\\d{9}");
         Matcher matcher1 = pattern1.matcher(phone);
-        Pattern pattern2= Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$");
+        Pattern pattern2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$");
         Matcher matcher2 = pattern2.matcher(pass);
         if (matcher.find()) {
             if (matcher1.find()) {
                 if (matcher2.find()) {
-                    for (Costumer costumer : CostumerController.getCostumers()){
-                        if (costumer.getEmail().equals(email)){
+                    for (Costumer costumer : CostumerController.getCostumers()) {
+                        if (costumer.getEmail().equals(email)) {
                             return "email is Repetitious\n";
                         }
-                         if (costumer.getPhone().equals(phone)){
-                           return  "phone is Repetitious\n";
+                        if (costumer.getPhone().equals(phone)) {
+                            return "phone is Repetitious\n";
 
                         }
                     }
-                        costumer1.setEmail(email);
-                        costumer1.setPass(pass);
-                        costumer1.setPhone(phone);
-                        return "edit done!";
+                    costumer1.setEmail(email);
+                    costumer1.setPass(pass);
+                    costumer1.setPhone(phone);
+                    return "edit done!";
                 } else
-                   return "invalid pass !";
+                    return "invalid pass !";
             } else
                 return "invalid phone !";
         } else
             return "invalid email !";
     }
-    public static String credit(String creditNumber,String cvv2,String pass){
+
+    public static String credit(String creditNumber, String cvv2, String pass) {
         Pattern pattern = Pattern.compile("^\\d{16}$");
         Matcher matcher = pattern.matcher(creditNumber);
         Pattern pattern1 = Pattern.compile("^\\d{4}$");
         Matcher matcher1 = pattern1.matcher(cvv2);
-        Pattern pattern2= Pattern.compile("^\\d{8}$");
+        Pattern pattern2 = Pattern.compile("^\\d{8}$");
         Matcher matcher2 = pattern2.matcher(pass);
         if (matcher.find()) {
             if (matcher1.find()) {

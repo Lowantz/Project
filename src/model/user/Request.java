@@ -13,38 +13,46 @@ public class Request {
     private RequestType requestType;
     private Costumer costumer;
 
-    public Request( RequestType requestType, Costumer costumer) {
+    public Request(RequestType requestType, Costumer costumer) {
         this.requestType = requestType;
         this.costumer = costumer;
         this.requestCode = counter;
-        counter ++;
+        counter++;
     }
 
-    public RequestType getRequestType(){
+    public RequestType getRequestType() {
         return requestType;
     }
-    public void setCredit(long credit){
+
+    public void setCredit(long credit) {
         this.credit = credit;
     }
-    public void setComment(Comment comment){
+
+    public void setComment(Comment comment) {
         this.comment = comment;
     }
-    public int getRequestCode(){
+
+    public int getRequestCode() {
         return requestCode;
     }
-    public long getCredit(){
+
+    public long getCredit() {
         return credit;
     }
-    public Comment getComment(){
+
+    public Comment getComment() {
         return comment;
     }
-    public Costumer getCostumer(){
+
+    public Costumer getCostumer() {
         return costumer;
     }
-    public Product getProduct(){
+
+    public Product getProduct() {
         return product;
     }
-    public void setProduct(Product product){
+
+    public void setProduct(Product product) {
         this.product = product;
     }
 }

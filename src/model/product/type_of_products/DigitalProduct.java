@@ -7,15 +7,16 @@ public abstract class DigitalProduct extends Product {
     private int weight;
     private int dimensions;
 
-    public DigitalProduct( String name, long price,
-                           int weight, int dimensions,int availableProducts) {
-        super( name, price, TypeOfProduct.DIGITAL,availableProducts);
+    public DigitalProduct(String name, long price,
+                          int weight, int dimensions, int availableProducts) {
+        super(name, price, TypeOfProduct.DIGITAL, availableProducts);
         this.weight = weight;
         this.dimensions = dimensions;
     }
+
     @Override
-    public String toString () {
-        String string = super.toString()+"weight:"+weight+" | dimensions:"+dimensions+" | ";
+    public String toString() {
+        String string = super.toString() + "weight:" + weight + " | dimensions:" + dimensions + " | ";
         return string;
     }
 }

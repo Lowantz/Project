@@ -5,7 +5,7 @@ import model.Comment;
 import java.util.ArrayList;
 
 public abstract class Product {
-    private int scoreCounter ;
+    private int scoreCounter;
     private static int counter = 1;
     private String Id;
     private String name;
@@ -16,7 +16,7 @@ public abstract class Product {
     private TypeOfProduct typeOfProduct;
     private int availableProducts;
 
-    public Product(String name, long price, TypeOfProduct typeOfProduct,int availableProducts ) {
+    public Product(String name, long price, TypeOfProduct typeOfProduct, int availableProducts) {
         this.name = name;
         this.scoreCounter = 0;
         this.availableProducts = availableProducts;
@@ -27,9 +27,10 @@ public abstract class Product {
         this.Id = buildId();
         counter++;
     }
-    private Boolean buildAvailableStatus(){
+
+    private Boolean buildAvailableStatus() {
         Boolean available = true;
-        if (availableProducts == 0 ){
+        if (availableProducts == 0) {
             available = false;
         }
         return available;
@@ -44,55 +45,71 @@ public abstract class Product {
         id.append(name);
         return id.toString();
     }
-    public String getName (){
+
+    public String getName() {
         return name;
     }
-    public int getScoreCounter(){
+
+    public int getScoreCounter() {
         return scoreCounter;
     }
-    public void setAverageScore(int averageScore){
+
+    public void setAverageScore(int averageScore) {
         this.averageScore = averageScore;
     }
-    public void setScoreCounter(int scoreCounter){
+
+    public void setScoreCounter(int scoreCounter) {
         this.scoreCounter = scoreCounter;
     }
-    public String getId (){
+
+    public String getId() {
         return Id;
     }
-    public TypeOfProduct getTypeOfProduct(){
+
+    public TypeOfProduct getTypeOfProduct() {
         return typeOfProduct;
     }
-    public long getPrice (){
+
+    public long getPrice() {
         return price;
     }
-    public int getAvailableProducts(){
+
+    public int getAvailableProducts() {
         return availableProducts;
     }
-    public int getAverageScore(){
+
+    public int getAverageScore() {
         return averageScore;
     }
-    public void setName (String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    public void setPrice (long price){
+
+    public void setPrice(long price) {
         this.price = price;
     }
-    public void setAvailableProducts (int availableProducts){
+
+    public void setAvailableProducts(int availableProducts) {
         this.availableProducts = availableProducts;
     }
-    public void setAvailable (Boolean available){
+
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
-    public ArrayList<Comment> getComments(){
+
+    public ArrayList<Comment> getComments() {
         return comments;
     }
+
     @Override
-    public String toString () {
-        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | available:" + available.toString() + " | averageScore:" + averageScore+" | Type :"+typeOfProduct+" | ";
+    public String toString() {
+        String string = "ID:" + Id + " | name:" + name + " | price:" + price + " | available:" + available.toString() + " | averageScore:" + averageScore + " | Type :" + typeOfProduct + " | ";
         return string;
     }
-    public String toStringList () {
-        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | available:" + available.toString();
+
+    public String toStringList() {
+        String string = "ID:" + Id + " | name:" + name + " | price:" + price + " | available:" + available.toString();
         return string;
     }
 }

@@ -25,12 +25,14 @@ public class PurchaseList {
         id.append(date);
         return id.toString();
     }
-    public ArrayList<Product> getPurchasedProducts(){
+
+    public ArrayList<Product> getPurchasedProducts() {
         return purchasedProducts;
     }
+
     @Override
     public String toString() {
-        String string = "ID:" + Id +" | date:" + date + " | purchased Price:" + purchasedPrice + " | products:\n";
+        String string = "ID:" + Id + " | date:" + date + " | purchased Price:" + purchasedPrice + " | products:\n";
         return string;
     }
 }

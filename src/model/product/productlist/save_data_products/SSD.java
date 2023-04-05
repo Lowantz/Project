@@ -7,15 +7,16 @@ public class SSD extends SaveData {
     private int readingSpeed;
     private int writingSpeed;
 
-    public SSD( String name, long price,
-                int weight, int dimensions, int capacity, int readingSpeed, int writingSpeed,int availableProducts) {
-        super( name, price, weight, dimensions, capacity,availableProducts);
+    public SSD(String name, long price,
+               int weight, int dimensions, int capacity, int readingSpeed, int writingSpeed, int availableProducts) {
+        super(name, price, weight, dimensions, capacity, availableProducts);
         this.readingSpeed = readingSpeed;
         this.writingSpeed = writingSpeed;
     }
+
     @Override
-    public String toString () {
-        String string = super.toString()+"reading Speed:"+readingSpeed+" | writing Speed:"+writingSpeed;
+    public String toString() {
+        String string = super.toString() + "reading Speed:" + readingSpeed + " | writing Speed:" + writingSpeed;
         return string;
     }
 }
