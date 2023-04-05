@@ -28,46 +28,16 @@ public class SighupPage {
             String email = sc.nextLine();
             String phone = sc.nextLine();
             String pass = sc.nextLine();
-            Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@(gmail|yahoo)\\.com$");
-            Matcher matcher = pattern.matcher(email);
-            Pattern pattern1 = Pattern.compile("09\\d{9}");
-            Matcher matcher1 = pattern1.matcher(phone);
-            Pattern pattern2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$");
-            Matcher matcher2 = pattern2.matcher(pass);
-            if (matcher.find()) {
-                if (matcher1.find()) {
-                    if (matcher2.find()) {
-                        for (Costumer costumer : CostumerController.getCostumers()) {
-                            if (costumer.getUserName().equals(username)) {
-                                System.out.println("user name is Repetitious\n");
-                                signupStatus = false;
-                            }
-                            if (costumer.getEmail().equals(email)) {
-                                System.out.println("email is Repetitious\n");
-                                signupStatus = false;
-                            }
-                            if (costumer.getPhone().equals(phone)) {
-                                System.out.println("phone is Repetitious\n");
-                                signupStatus = false;
-                            }
-                        }
-                        if (signupStatus) {
-                            Request request = new Request(RequestType.Signup, CostumerController.addCostumers(username, email, phone, pass));
-                            Admin.getRequests().add(request);
-                            System.out.println("signup done !");
-                            finalUsername = username;
-                            finalPass = pass;
-                            LoginPage.loginPageAdmin();
-                            signupStatus = false;
-                        } else {
-                            signupStatus = true;
-                        }
-                    } else
-                        System.out.println("invalid pass !");
-                } else
-                    System.out.println("invalid phone !");
-            } else
-                System.out.println("invalid email !");
+            String a = CostumerController.ukg(username,email,phone,pass);
+            System.out.println(a);
+            if (a.equals("signup done !")){
+                Request request = new Request(RequestType.Signup, CostumerController.addCostumers(username, email, phone, pass));
+                Admin.getRequests().add(request);
+                finalUsername = username;
+                finalPass = pass;
+                LoginPage.loginPageAdmin();
+                signupStatus = false;
+            }
         }
         return CostumerController.searchCostumers(finalUsername, finalPass);
     }

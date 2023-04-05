@@ -27,12 +27,13 @@ public class CostumerView {
                 switch (answer) {
                     case 1:
                         Boolean editStatus = true;
+                        String result;
                         while (editStatus) {
                             System.out.println("please enter your email, phone and pass :\n");
                             String email = sc.nextLine();
                             String phone = sc.nextLine();
                             String pass = sc.nextLine();
-                            String result = CostumerController.edit(phone, email, pass, costumer);
+                            result = CostumerController.edit(phone, email, pass, costumer);
                             System.out.println(result);
                             if (result.equals("edit done!")) {
                                 editStatus = false;

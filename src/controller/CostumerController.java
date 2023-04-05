@@ -130,4 +130,37 @@ public class CostumerController {
         } else
             return "invalid creditNumber !";
     }
+
+    public static String ukg(String username, String email, String phone, String pass) {
+        Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@(gmail|yahoo)\\.com$");
+        Matcher matcher = pattern.matcher(email);
+        Pattern pattern1 = Pattern.compile("09\\d{9}");
+        Matcher matcher1 = pattern1.matcher(phone);
+        Pattern pattern2 = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$");
+        Matcher matcher2 = pattern2.matcher(pass);
+        Boolean a = matcher.find();
+        Boolean b = matcher1.find();
+        Boolean c = matcher2.find();
+        if (a) {
+            if (b) {
+                if (c) {
+                    for (Costumer costumer : CostumerController.getCostumers()) {
+                        if (costumer.getUserName().equals(username)) {
+                            return "user name is Repetitious\n";
+                        }
+                        if (costumer.getEmail().equals(email)) {
+                            return "email is Repetitious\n";
+                        }
+                        if (costumer.getPhone().equals(phone)) {
+                            return "phone is Repetitious\n";
+                        }
+                    }
+                    return "signup done !";
+                } else
+                    return "invalid pass !";
+            } else
+                return "invalid phone !";
+        } else
+            return "invalid email !";
+    }
 }
