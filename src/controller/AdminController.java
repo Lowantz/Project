@@ -1,5 +1,5 @@
 package controller;
-
+import model.CommentStatus;
 import model.product.Product;
 import model.product.TypeOfProduct;
 import model.product.productlist.Car;
@@ -15,10 +15,6 @@ import model.product.productlist.save_data_products.SSD;
 import model.user.Request;
 import model.user.RequestType;
 import model.user.user_types.Admin;
-import model.user.user_types.Costumer;
-
-import java.util.ArrayList;
-
 public class AdminController {
 
     public static void addProduct(String[] parts,int i) {
@@ -162,6 +158,7 @@ public class AdminController {
                     }
                     if (request.getRequestType() == RequestType.Comment) {
                         request.getProduct().getComments().add(request.getComment());
+                        request.getComment().setStatus(CommentStatus.accepted);
                     }
                     if (request.getRequestType() == RequestType.RaiseCredit) {
                        long credit = request.getCostumer().getCredit();
@@ -180,6 +177,9 @@ public class AdminController {
             code = Integer.parseInt(a);
             for (Request request : Admin.getRequests()){
                 if (request.getRequestCode() == code){
+                    if(request.getRequestType() == RequestType.Comment){
+                        request.getComment().setStatus(CommentStatus.rejected);
+                    }
                     Admin.getRequests().remove(request);
                     break;
                 }
@@ -281,5 +281,12 @@ public class AdminController {
             }
         }
         return result.toString();
+    }
+    public static void score(int score,String Id){
+       int a = (searchID(Id).getScoreCounter() * searchID(Id).getAverageScore()) + score;
+       int average = (a / (searchID(Id).getScoreCounter()+1));
+        searchID(Id).setAverageScore(average);
+        int newCount =  searchID(Id).getScoreCounter() + 1;
+        searchID(Id).setScoreCounter(newCount);
     }
 }

@@ -2,6 +2,7 @@ package view;
 
 import controller.CommentController;
 import controller.CostumerController;
+import controller.ProductController;
 import model.Comment;
 import model.product.Product;
 import model.user.user_types.Costumer;
@@ -14,7 +15,7 @@ public class ProductView {
         System.out.println(product.toString());
         Boolean menu = true;
         while (menu) {
-            System.out.println("1-View Comments\n2-add to purchase list\n3-add comment");
+            System.out.println("1-View Comments\n2-add to purchase list\n3-add comment\n4-exit");
             int answer = sc.nextInt();
             sc.nextLine();
             switch (answer){
@@ -22,8 +23,9 @@ public class ProductView {
                     System.out.println(CommentController.viewComments(product));
                     break;
                 case 2:
-                    System.out.println(CostumerController.addProduct(costumer,product));
-                    if(CostumerController.addProduct(costumer,product).equals("please signup first!")) {
+                    String result = CostumerController.addProduct(costumer,product);
+                    System.out.println(result);
+                    if(result.equals("please signup first!")) {
                         Costumer costumer1 = SighupPage.signupPage();
                         CostumerController.addProduct(costumer1, product);
                         CostumerView.costumerView(costumer1);
@@ -31,6 +33,12 @@ public class ProductView {
                     menu = false;
                     break;
                 case 3 :
+                    System.out.println("please enter your comment :\n");
+                    String answer4 = sc.nextLine();
+                    System.out.println(ProductController.comment(answer4,costumer,product));
+                    break;
+                case 4:
+                    menu = false;
                     break;
             }
         }

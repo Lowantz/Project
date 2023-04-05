@@ -5,18 +5,20 @@ import model.Comment;
 import java.util.ArrayList;
 
 public abstract class Product {
+    private int scoreCounter ;
     private static int counter = 1;
     private String Id;
     private String name;
     private long price;
     private Boolean available;
     private int averageScore;
-    private ArrayList<Comment> comments;
+    private ArrayList<Comment> comments = new ArrayList<>();
     private TypeOfProduct typeOfProduct;
     private int availableProducts;
 
     public Product(String name, long price, TypeOfProduct typeOfProduct,int availableProducts ) {
         this.name = name;
+        this.scoreCounter = 0;
         this.availableProducts = availableProducts;
         this.price = price;
         this.available = buildAvailableStatus();
@@ -44,6 +46,15 @@ public abstract class Product {
     }
     public String getName (){
         return name;
+    }
+    public int getScoreCounter(){
+        return scoreCounter;
+    }
+    public void setAverageScore(int averageScore){
+        this.averageScore = averageScore;
+    }
+    public void setScoreCounter(int scoreCounter){
+        this.scoreCounter = scoreCounter;
     }
     public String getId (){
         return Id;
@@ -77,11 +88,11 @@ public abstract class Product {
     }
     @Override
     public String toString () {
-        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | status:" + available + " | averageScore:" + averageScore+" | Type :"+typeOfProduct+" | ";
+        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | available:" + available.toString() + " | averageScore:" + averageScore+" | Type :"+typeOfProduct+" | ";
         return string;
     }
     public String toStringList () {
-        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | status:" + available.toString();
+        String string = "ID:" + Id +" | name:" + name + " | price:" + price + " | available:" + available.toString();
         return string;
     }
 }

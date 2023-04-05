@@ -26,6 +26,9 @@ public class Request {
     public void setCredit(long credit){
         this.credit = credit;
     }
+    public void setComment(Comment comment){
+        this.comment = comment;
+    }
     public int getRequestCode(){
         return requestCode;
     }
@@ -40,5 +43,8 @@ public class Request {
     }
     public Product getProduct(){
         return product;
+    }
+    public void setProduct(Product product){
+        this.product = product;
     }
 }

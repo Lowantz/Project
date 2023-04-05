@@ -7,9 +7,9 @@ public class Comment {
     private String productId;
     private String text;
     private Boolean purchaseStatus;
-    private String status;
+    private CommentStatus status;
 
-    public Comment(User costumer, String productId, String text, Boolean purchaseStatus, String status) {
+    public Comment(User costumer, String productId, String text, Boolean purchaseStatus, CommentStatus status) {
         this.costumer = costumer;
         this.productId = productId;
         this.text = text;
@@ -20,5 +20,14 @@ public class Comment {
     public String toString () {
         String a = costumer.getUserName()+" : "+text+"\n";
         return a;
+    }
+    public String getText(){
+        return text;
+    }
+    public String getProductId(){
+        return productId;
+    }
+    public void setStatus(CommentStatus commentStatus){
+        this.status = commentStatus;
     }
 }

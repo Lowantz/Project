@@ -70,6 +70,14 @@ public class AdminView {
                 System.out.println("Signup request : \n"+a.getCostumer().toString()+
                         "\nrequest code :"+a.getRequestCode()+"\n");
             }
+            if (a.getRequestType() == RequestType.RaiseCredit){
+                System.out.println("Raise Credit request : \n"+a.getCostumer().toString()+
+                        "\ncredit:"+a.getCredit()+"\nrequest code :"+a.getRequestCode()+"\n");
+            }
+            if (a.getRequestType() == RequestType.Comment){
+                System.out.println("comment request : \n"+a.getCostumer().toString()+
+                        "\ncomment:"+a.getComment().getText()+"\nproduct ID:"+a.getComment().getProductId()+"\nrequest code :"+a.getRequestCode()+"\n");
+            }
         }
         if ( requests.size() == 0 )
             System.out.println(" no request !\n");

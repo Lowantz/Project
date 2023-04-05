@@ -12,9 +12,10 @@ public class PurchaseList {
     private ArrayList<Product> purchasedProducts;
 
     public PurchaseList(String date, long purchasedPrice) {
-        this.Id = buildId();
         this.date = date;
+        this.Id = buildId();
         this.purchasedPrice = purchasedPrice;
+        purchasedProducts = new ArrayList<>();
     }
 
     private String buildId() {
@@ -23,5 +24,13 @@ public class PurchaseList {
         id.append("-");
         id.append(date);
         return id.toString();
+    }
+    public ArrayList<Product> getPurchasedProducts(){
+        return purchasedProducts;
+    }
+    @Override
+    public String toString() {
+        String string = "ID:" + Id +" | date:" + date + " | purchased Price:" + purchasedPrice + " | products:\n";
+        return string;
     }
 }

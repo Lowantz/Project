@@ -36,4 +36,13 @@ public abstract class User {
         String string = "username:" + userName +" | email:" + email + " | phone:" + phone + " | pass:" + pass + " | roll:" + roll.toString()+" | ";
         return string;
     }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public void setPhone(String phone){
+        this.phone = phone;
+    }
+    public void setPass(String pass){
+        this.pass = pass;
+    }
 }
