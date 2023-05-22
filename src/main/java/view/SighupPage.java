@@ -1,6 +1,8 @@
 package view;
 
 import controller.CostumerController;
+import model.exception.WrongEmail;
+import model.exception.WrongPhone;
 import model.user.Request;
 import model.user.RequestType;
 import model.user.user_types.Admin;
@@ -26,15 +28,22 @@ public class SighupPage {
             String email = sc.nextLine();
             String phone = sc.nextLine();
             String pass = sc.nextLine();
-            String a = CostumerController.ukg(username,email,phone,pass);
-            System.out.println(a);
-            if (a.equals("signup done !")){
-                Request request = new Request(RequestType.Signup, CostumerController.addCostumers(username, email, phone, pass));
-                Admin.getRequests().add(request);
-                finalUsername = username;
-                finalPass = pass;
-                LoginPage.loginPageAdmin();
-                signupStatus = false;
+            try {
+                String a = CostumerController.dataCheck(username, email, phone, pass);
+                System.out.println(a);
+                if (a.equals("signup done !")) {
+                    Request request = new Request(RequestType.Signup, CostumerController.addCostumers(username, email, phone, pass));
+                    Admin.getRequests().add(request);
+                    finalUsername = username;
+                    finalPass = pass;
+                    LoginPage.loginPageAdmin();
+                    signupStatus = false;
+                }
+            }catch (WrongEmail wrongEmail){
+                System.out.println("Wrong Email!");
+            }
+            catch (WrongPhone wrongPhone){
+                System.out.println("Wrong Phone!");
             }
         }
         return CostumerController.searchCostumers(finalUsername, finalPass);

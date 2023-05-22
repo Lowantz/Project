@@ -3,7 +3,7 @@ package view;
 import controller.AdminController;
 import controller.CostumerController;
 import model.DiscountCode;
-import model.exception.WrongDiscountCode;
+import model.exception.*;
 import model.product.Product;
 import model.user.PurchaseList;
 import model.user.Request;
@@ -35,10 +35,17 @@ public class CostumerView {
                             String email = sc.nextLine();
                             String phone = sc.nextLine();
                             String pass = sc.nextLine();
-                            result = CostumerController.edit(phone, email, pass, costumer);
-                            System.out.println(result);
-                            if (result.equals("edit done!")) {
-                                editStatus = false;
+                            try {
+                                result = CostumerController.edit(phone, email, pass, costumer);
+                                System.out.println(result);
+                                if (result.equals("edit done!")) {
+                                    editStatus = false;
+                                }
+                            }catch (WrongEmail wrongEmail){
+                                System.out.println("Wrong Email!");
+                            }
+                            catch (WrongPhone wrongPhone){
+                                System.out.println("Wrong Phone!");
                             }
                         }
                         break;
@@ -88,8 +95,15 @@ public class CostumerView {
                                         }
                                         else
                                             System.out.println("error!");
-                                    String l = CostumerController.buy(costumer,price);
-                                    System.out.println(l);
+                                        try {
+                                            String l = CostumerController.buy(costumer, price);
+                                            System.out.println(l);
+                                        }catch (NoAvailableProduct noAvailableProduct ){
+                                            System.out.println("No Available Product!");
+                                        }
+                                        catch (NoEnoughCredit noEnoughCredit){
+                                            System.out.println("No Enough Credit!");
+                                        }
                                     break;
                                 case 3:
                                     bool1 = false;

@@ -1,12 +1,11 @@
 package controller;
 
 import model.DiscountCode;
-import model.exception.WrongDiscountCode;
+import model.exception.*;
 import model.product.Product;
 import model.user.PurchaseList;
 import model.user.user_types.Costumer;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -91,7 +90,7 @@ public class CostumerController {
             throw new WrongDiscountCode();
     }
 
-    public static String buy(Costumer costumer, long price) {
+    public static String buy(Costumer costumer, long price) throws NoAvailableProduct, NoEnoughCredit {
         if (costumer.getToBuyList().size() == 0) {
             return "Purchase List is empty!";
         } else {
@@ -100,16 +99,19 @@ public class CostumerController {
                 long remaining = costumer.getCredit() - price;
                 costumer.setCredit(remaining);
                 for (Product a : costumer.getToBuyList()) {
-                    costumer.getPurchasedProducts().add(a);
-                    purchaseList.getPurchasedProducts().add(a);
-                    int b = a.getAvailableProducts();
-                    a.setAvailableProducts((b - 1));
+                    if(a.getAvailableProducts()>0) {
+                        costumer.getPurchasedProducts().add(a);
+                        purchaseList.getPurchasedProducts().add(a);
+                        int b = a.getAvailableProducts();
+                        a.setAvailableProducts((b - 1));
+                    }
+                    else throw new NoAvailableProduct();
                 }
                 costumer.getToBuyList().clear();
                 costumer.getHistoryBuyList().add(purchaseList);
                 return "buy successfully done!";
             } else
-                return "not enough credit";
+                throw new NoEnoughCredit();
         }
     }
 
@@ -122,7 +124,7 @@ public class CostumerController {
         return null;
     }
 
-    public static String edit(String phone, String email, String pass, Costumer costumer1) {
+    public static String edit(String phone, String email, String pass, Costumer costumer1) throws WrongEmail, WrongPhone {
         Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@(gmail|yahoo)\\.com$");
         Matcher matcher = pattern.matcher(email);
         Pattern pattern1 = Pattern.compile("09\\d{9}");
@@ -148,9 +150,9 @@ public class CostumerController {
                 } else
                     return "invalid pass !";
             } else
-                return "invalid phone !";
+                throw new WrongPhone();
         } else
-            return "invalid email !";
+            throw new WrongEmail();
     }
 
     public static String credit(String creditNumber, String cvv2, String pass) {
@@ -172,7 +174,7 @@ public class CostumerController {
             return "invalid creditNumber !";
     }
 
-    public static String ukg(String username, String email, String phone, String pass) {
+    public static String dataCheck(String username, String email, String phone, String pass) throws WrongEmail, WrongPhone {
         Pattern pattern = Pattern.compile("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@(gmail|yahoo)\\.com$");
         Matcher matcher = pattern.matcher(email);
         Pattern pattern1 = Pattern.compile("09\\d{9}");
@@ -200,8 +202,8 @@ public class CostumerController {
                 } else
                     return "invalid pass !";
             } else
-                return "invalid phone !";
+               throw new WrongPhone();
         } else
-            return "invalid email !";
+          throw new WrongEmail();
     }
 }
