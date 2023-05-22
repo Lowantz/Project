@@ -37,6 +37,12 @@ public class AdminView {
                             case "DiscountCode" :
                                 AdminController.discountCode(parts, i);
                                 break;
+                            case "NewDC" :
+                                AdminController.addDiscount(parts,i);
+                                break;
+                            case "RemoveDC" :
+                                AdminController.deleteDiscount(parts,i);
+                                break;
                         }
                     }
                     switch (parts[0]) {
@@ -47,7 +53,7 @@ public class AdminView {
                             viewRequests(Admin.getRequests());
                             break;
                     }
-                    if (!parts[0].equals("ShowRequests") && !parts[0].equals("ShowCostumers") && !parts[0].equals("Edit") && !parts[0].equals("Remove") && !parts[0].equals("Add") && !parts[0].equals("DiscountCode")) {
+                    if (!parts[0].equals("ShowRequests") && !parts[0].equals("ShowCostumers") && !parts[0].equals("Edit") && !parts[0].equals("Remove") && !parts[0].equals("Add") && !parts[0].equals("DiscountCode") && !parts[0].equals("RemoveDC") && !parts[0].equals("NewDC")) {
                         System.out.println("error!");
                     }
                     break;

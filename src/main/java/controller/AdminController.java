@@ -14,12 +14,14 @@ import model.product.productlist.pencil.Pencil;
 import model.product.productlist.pencil.PencilType;
 import model.product.productlist.save_data_products.Flash;
 import model.product.productlist.save_data_products.SSD;
+import model.product.type_of_products.DigitalProduct;
 import model.user.Request;
 import model.user.RequestType;
 import model.user.user_types.Admin;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
 
@@ -126,6 +128,7 @@ public class AdminController {
                 Admin.getProducts().add(bike);
                 break;
         }
+        Collections.sort(Admin.getProducts());
     }
 
     /////
@@ -319,5 +322,40 @@ public class AdminController {
         searchID(Id).setAverageScore(average);
         int newCount = searchID(Id).getScoreCounter() + 1;
         searchID(Id).setScoreCounter(newCount);
+    }
+    public static void deleteDiscount(String[] words, int i) {
+        for (Product p : Admin.getProducts()) {
+            if (p.getId().toString().equals(words[i + 1])) {
+                if (p instanceof DigitalProduct) {
+                    ((DigitalProduct) p).deleteDiscount();
+                }
+                if (p instanceof Pen) {
+                    ((Pen) p).deleteDiscount();
+                }
+                if (p instanceof Pencil) {
+                    ((Pencil) p).deleteDiscount();
+                }
+            }
+        }
+    }
+
+
+    public static void addDiscount(String[] words, int i) {
+        for (Product p : Admin.getProducts()) {
+            if (p.getId().toString().equals(words[i + 1])) {
+                if (p instanceof DigitalProduct) {
+                    ((DigitalProduct) p).addDiscount(Double.parseDouble(words[i + 2]));
+                    DigitalProduct.afterDiscountPrice(p, Double.parseDouble(words[i + 2]));
+                }
+                if (p instanceof Pen) {
+                    ((Pen) p).addDiscount(Double.parseDouble(words[i + 2]));
+                    Pen.afterDiscountPrice(p, Double.parseDouble(words[i + 2]));
+                }
+                if (p instanceof Pencil) {
+                    ((Pencil) p).addDiscount(Double.parseDouble(words[i + 2]));
+                    Pencil.afterDiscountPrice(p, Double.parseDouble(words[i + 2]));
+                }
+            }
+        }
     }
 }

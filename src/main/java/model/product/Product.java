@@ -4,7 +4,7 @@ import model.Comment;
 
 import java.util.ArrayList;
 
-public abstract class Product {
+public abstract class Product implements Comparable{
     private int scoreCounter;
     private static int counter = 1;
     private String Id;
@@ -111,5 +111,45 @@ public abstract class Product {
     public String toStringList() {
         String string = "ID:" + Id + " | name:" + name + " | price:" + price + " | available:" + available.toString();
         return string;
+    }
+    @Override
+    public int compareTo(Object o) {
+        Product product = (Product) o;
+        if (this.name.compareTo(product.name) > 0) {
+            return 1;
+        }
+        else if (this.name.compareTo(product.name) == 0) {
+
+            if (this.averageScore > product.averageScore) {
+                return 1;
+            }
+            else if (this.averageScore == product.averageScore) {
+
+
+                if (this.price > product.price) {
+                    return 1;
+                }
+                else if (this.price == product.price) {
+
+                    if (this.availableProducts > product.availableProducts) {
+                        return 1;
+                    }
+                    else {
+                        return -1;
+                    }
+                }
+                else if (this.price < product.price) {
+                    return -1;
+                }
+            }
+
+            else if (this.averageScore < product.averageScore) {
+                return -1;
+            }
+        }
+        else if (this.name.compareTo(product.name) < 0) {
+            return -1;
+        }
+        return 0;
     }
 }
