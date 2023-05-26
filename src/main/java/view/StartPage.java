@@ -45,6 +45,7 @@ public class StartPage {
         Boolean start = true;
         if (answer1 == 1)
             start = false;
+        System.out.println("Have good day!");
         return start;
     }
 

@@ -22,8 +22,7 @@ public class CostumerView {
         } else {
             Boolean bool = true;
             while (bool) {
-                System.out.println("welcome to online shop " + "\n1-Edit your profile\n2-view products\n3-view purchase list\n4-raise credit\n" +
-                        "5-view purchase history\n6-view discount Codes\n7-exit");
+                System.out.println("welcome to online shop " + "\n1-Edit your profile\n2-view products\n3-view purchase list\n4-raise credit\n" + "5-view purchase history\n6-view discount Codes\n7-exit");
                 int answer = sc.nextInt();
                 sc.nextLine();
                 switch (answer) {
@@ -41,10 +40,9 @@ public class CostumerView {
                                 if (result.equals("edit done!")) {
                                     editStatus = false;
                                 }
-                            }catch (WrongEmail wrongEmail){
+                            } catch (WrongEmail wrongEmail) {
                                 System.out.println("Wrong Email!");
-                            }
-                            catch (WrongPhone wrongPhone){
+                            } catch (WrongPhone wrongPhone) {
                                 System.out.println("Wrong Phone!");
                             }
                         }
@@ -68,42 +66,35 @@ public class CostumerView {
                                     CostumerController.removeProduct(costumer, answer6);
                                     break;
                                 case 2:
-                                    System.out.println("your bill is : "+CostumerController.calculatePay(costumer));
+                                    System.out.println("your bill is : " + CostumerController.calculatePay(costumer));
                                     long price = 0;
-                                        System.out.println("do yo have any discount code ?\nif you dont have any" +
-                                                " discount code please enter 0 and if you have" +
-                                                " enter 1");
-                                        int a = sc.nextInt();
-                                        if (a == 0){
-                                            price = CostumerController.calculatePay(costumer);
-                                        }
-                                        else if (a == 1){
-                                            price = CostumerController.calculatePay(costumer);
-                                            System.out.println("how many codes you want to use?");
-                                            int b = sc.nextInt();
-                                            sc.nextLine();
-                                            System.out.println("enter the codes!");
-                                            for (int i = 0;i<b;i++){
-                                                String code = sc.nextLine();
-                                                try {
-                                                    price = CostumerController.addDiscount(code, price, costumer);
-                                                    System.out.println("price : "+price);
-                                                }catch (WrongDiscountCode discountCode ){
-                                                    System.out.println("Wrong Discount Code!");
-                                                }
+                                    System.out.println("do yo have any discount code ?\nif you dont have any" + " discount code please enter 0 and if you have" + " enter 1");
+                                    int a = sc.nextInt();
+                                    if (a == 0) {
+                                        price = CostumerController.calculatePay(costumer);
+                                    } else if (a == 1) {
+                                        price = CostumerController.calculatePay(costumer);
+                                        System.out.println("how many codes you want to use?");
+                                        int b = sc.nextInt();
+                                        sc.nextLine();
+                                        System.out.println("enter the codes!");
+                                        for (int i = 0; i < b; i++) {
+                                            String code = sc.nextLine();
+                                            try {
+                                                price = CostumerController.addDiscount(code, price, costumer);
+                                                System.out.println("price : " + price);
+                                            } catch (WrongDiscountCode discountCode) {
+                                                System.out.println("Wrong Discount Code!");
                                             }
                                         }
-                                        else
-                                            System.out.println("error!");
-                                        try {
-                                            String l = CostumerController.buy(costumer, price);
-                                            System.out.println(l);
-                                        }catch (NoAvailableProduct noAvailableProduct ){
-                                            System.out.println("No Available Product!");
-                                        }
-                                        catch (NoEnoughCredit noEnoughCredit){
-                                            System.out.println("No Enough Credit!");
-                                        }
+                                    } else System.out.println("error!");
+                                    try {
+                                        String l = CostumerController.buy(costumer, price);
+                                        System.out.println(l);
+                                    }
+                                    catch (NoEnoughCredit noEnoughCredit) {
+                                        System.out.println("No Enough Credit!");
+                                    }
                                     break;
                                 case 3:
                                     bool1 = false;
@@ -163,10 +154,9 @@ public class CostumerView {
                         }
                         break;
                     case 6:
-                        if (costumer.getDiscountCodes().size() == 0){
+                        if (costumer.getDiscountCodes().size() == 0) {
                             System.out.println("No Discount Codes!");
-                        }
-                        else {
+                        } else {
                             for (DiscountCode a : costumer.getDiscountCodes()) {
                                 System.out.println(a.getDiscountCode());
                             }

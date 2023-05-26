@@ -22,6 +22,7 @@ public class SighupPage {
         Boolean signupStatus = true;
         String finalUsername = "";
         String finalPass = "";
+        String a;
         while (signupStatus) {
             System.out.println("please enter your username, email, phone and pass :\n");
             String username = sc.nextLine();
@@ -29,15 +30,15 @@ public class SighupPage {
             String phone = sc.nextLine();
             String pass = sc.nextLine();
             try {
-                String a = CostumerController.dataCheck(username, email, phone, pass);
+                a = CostumerController.dataCheck(username, email, phone, pass);
                 System.out.println(a);
                 if (a.equals("signup done !")) {
                     Request request = new Request(RequestType.Signup, CostumerController.addCostumers(username, email, phone, pass));
                     Admin.getRequests().add(request);
                     finalUsername = username;
                     finalPass = pass;
-                    LoginPage.loginPageAdmin();
                     signupStatus = false;
+                    LoginPage.loginPageAdmin();
                 }
             }catch (WrongEmail wrongEmail){
                 System.out.println("Wrong Email!");

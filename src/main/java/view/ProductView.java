@@ -3,6 +3,8 @@ package view;
 import controller.CommentController;
 import controller.CostumerController;
 import controller.ProductController;
+import model.exception.NoAvailableProduct;
+import model.exception.NoEnoughCredit;
 import model.product.Product;
 import model.user.user_types.Costumer;
 
@@ -23,14 +25,18 @@ public class ProductView {
                     System.out.println(CommentController.viewComments(product));
                     break;
                 case 2:
-                    String result = CostumerController.addProduct(costumer, product);
-                    System.out.println(result);
-                    if (result.equals("please signup first!")) {
-                        Costumer costumer1 = SighupPage.signupPage();
-                        CostumerController.addProduct(costumer1, product);
-                        CostumerView.costumerView(costumer1);
+                    try {
+                        String result = CostumerController.addProduct(costumer, product);
+                        System.out.println(result);
+                        if (result.equals("please signup first!")) {
+                            Costumer costumer1 = SighupPage.signupPage();
+                            CostumerController.addProduct(costumer1, product);
+                            CostumerView.costumerView(costumer1);
+                        }
+                        menu = false;
+                    }catch (NoAvailableProduct noAvailableProduct){
+                        System.out.println("No Available Product!");
                     }
-                    menu = false;
                     break;
                 case 3:
                     System.out.println("please enter your comment :\n");

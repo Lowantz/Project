@@ -30,14 +30,16 @@ public class CostumerController {
         }
     }
 
-    public static String addProduct(Costumer costumer, Product product) {
+    public static String addProduct(Costumer costumer, Product product) throws NoAvailableProduct {
         if (costumer == null)
             return "please signup first!";
         else {
             if (product.getAvailableProducts() == 0) {
-                return "product is not available!\n";
+                throw new NoAvailableProduct();
             } else {
                 costumer.getToBuyList().add(product);
+                int b = product.getAvailableProducts();
+                product.setAvailableProducts((b - 1));
                 return "add done!";
             }
         }
@@ -47,6 +49,8 @@ public class CostumerController {
         for (Product product : costumer.getToBuyList()) {
             if (product.getId().equals(Id)) {
                 costumer.getToBuyList().remove(product);
+                int b = product.getAvailableProducts();
+                product.setAvailableProducts((b + 1));
                 break;
             }
         }
@@ -90,7 +94,7 @@ public class CostumerController {
             throw new WrongDiscountCode();
     }
 
-    public static String buy(Costumer costumer, long price) throws NoAvailableProduct, NoEnoughCredit {
+    public static String buy(Costumer costumer, long price) throws NoEnoughCredit {
         if (costumer.getToBuyList().size() == 0) {
             return "Purchase List is empty!";
         } else {
@@ -99,13 +103,8 @@ public class CostumerController {
                 long remaining = costumer.getCredit() - price;
                 costumer.setCredit(remaining);
                 for (Product a : costumer.getToBuyList()) {
-                    if(a.getAvailableProducts()>0) {
                         costumer.getPurchasedProducts().add(a);
                         purchaseList.getPurchasedProducts().add(a);
-                        int b = a.getAvailableProducts();
-                        a.setAvailableProducts((b - 1));
-                    }
-                    else throw new NoAvailableProduct();
                 }
                 costumer.getToBuyList().clear();
                 costumer.getHistoryBuyList().add(purchaseList);

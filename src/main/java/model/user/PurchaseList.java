@@ -16,6 +16,7 @@ public class PurchaseList {
         this.Id = buildId();
         this.purchasedPrice = purchasedPrice;
         purchasedProducts = new ArrayList<>();
+        counter ++;
     }
 
     private String buildId() {
