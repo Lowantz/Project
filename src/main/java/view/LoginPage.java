@@ -6,7 +6,7 @@ import model.user.user_types.Costumer;
 
 import java.util.Scanner;
 
-public class LoginPage {
+public class LoginPage  {
     static Scanner sc = new Scanner(System.in);
 
     public static void loginPageAdmin() {

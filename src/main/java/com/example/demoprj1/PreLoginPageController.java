@@ -39,8 +39,12 @@ public class PreLoginPageController implements Initializable {
     }
 
     @FXML
-    void loginButtonClick(MouseEvent event) {
-
+    void loginButtonClick(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
