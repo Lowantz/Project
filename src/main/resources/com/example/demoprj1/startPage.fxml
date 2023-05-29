@@ -13,10 +13,10 @@
    <children>
       <ImageView fitHeight="420.0" fitWidth="301.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image0%20(1).jpeg" />
+            <Image url="@images/image0%20(1).jpeg" />
          </image>
       </ImageView>
-      <Label layoutX="14.0" layoutY="24.0" text="Welcome&#10;To Our &#10;Online Shop&#10;Lets Start" textFill="#0f2862">
+      <Label layoutX="14.0" layoutY="46.0" text="Welcome&#10;To &#10;Wavy Shop" textFill="#0f2862">
          <font>
             <Font name="Lucida Fax Demibold" size="36.0" />
          </font>

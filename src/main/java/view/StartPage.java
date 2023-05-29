@@ -1,12 +1,9 @@
 package view;
-
 import model.user.user_types.Costumer;
-
 import java.util.Scanner;
 
 public class StartPage {
     static Scanner sc = new Scanner(System.in);
-
     public static Boolean page1() {
         System.out.println("Welcome to online shop ! lets go !\n" + "1-Admin\n" + "2-Costumer\n" + "3-view products");
         int answer = sc.nextInt();
