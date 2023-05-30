@@ -44,8 +44,12 @@ public class StartPageController implements Initializable {
     }
 
     @FXML
-    void productsButtonClick(MouseEvent event) {
-
+    void productsButtonClick(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("productsPage.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @Override

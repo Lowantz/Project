@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ProductsPageController implements Initializable {
+public class ProductsPageLoginController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -90,7 +90,7 @@ public class ProductsPageController implements Initializable {
 
     @FXML
     void clickBackButton(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("costumerPage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

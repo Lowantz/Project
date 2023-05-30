@@ -105,5 +105,9 @@ public class EditPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         costumer = LoginPageController.costumer;
         infoText.setText(costumer.toString());
+        editButton.setFocusTraversable(false);
+        passBuild.setFocusTraversable(false);
+        phoneBuild.setFocusTraversable(false);
+        emailBuild.setFocusTraversable(false);
     }
 }

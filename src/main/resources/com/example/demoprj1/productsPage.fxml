@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demoprj1.ProductsPage"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demoprj1.ProductsPageController">
+    <children>
+        <ImageView fitHeight="420.0" fitWidth="301.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/image0%20(1).jpeg" />
+            </image>
+        </ImageView>
+        <Button fx:id="chooseProductButton" layoutX="98.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#chooseProductButtonClick" prefHeight="20.0" prefWidth="102.0" text="Choose Product" textAlignment="RIGHT" textFill="#0f2862">
+            <font>
+                <Font name="Lucida Fax Demibold" size="10.0" />
+            </font>
+            <effect>
+                <DropShadow>
+                    <color>
+                        <Color red="0.03529411926865578" green="0.12156862765550613" blue="0.21176470816135406" />
+                    </color>
+                </DropShadow>
+            </effect>
+        </Button>
+        <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="26.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#clickBackButton" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/icons8-back-button-50.png" />
+            </image>
+        </ImageView>
+      <ListView fx:id="productsList" layoutX="29.0" layoutY="47.0" prefHeight="210.0" prefWidth="231.0" />
+      <Button fx:id="searchButton" layoutX="212.0" layoutY="318.0" mnemonicParsing="false" onMouseClicked="#searchButtonClick" prefHeight="20.0" prefWidth="50.0" text="Search" textAlignment="RIGHT" textFill="#0f2862">
+         <font>
+            <Font name="Lucida Fax Demibold" size="10.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.03529411926865578" green="0.12156862765550613" blue="0.21176470816135406" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <TextField fx:id="text" layoutX="30.0" layoutY="280.0" prefHeight="22.0" prefWidth="231.0" promptText="Enter the ID/Filter/Search...">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="refreshButton" fitHeight="32.0" fitWidth="35.0" layoutX="256.0" layoutY="11.0" onMouseClicked="#refreshButtonClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/wired-lineal-50-minus-circle.gif" />
+         </image>
+      </ImageView>
+      <MenuButton fx:id="filterBox" layoutX="30.0" layoutY="318.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="56.0" text="Filter" textFill="#0f2862">
+         <font>
+            <Font name="Lucida Fax Demibold" size="10.0" />
+         </font>
+         <items>
+            <MenuItem fx:id="priceButton" mnemonicParsing="false" onAction="#priceButtonClick" text="Price" />
+            <MenuItem fx:id="availablityButton" mnemonicParsing="false" onAction="#availablityButtonClick" text="Availablity" />
+            <MenuItem fx:id="averageScoreButton" mnemonicParsing="false" onAction="#averageScoreButtonClick" text="Average Score" />
+            <MenuItem fx:id="nameButton" mnemonicParsing="false" onAction="#nameButtonClick" text="Name" />
+            <MenuItem fx:id="typesButton" mnemonicParsing="false" onAction="#typesButtonClick" text="Types" />
+            <MenuItem fx:id="CPUModelButton" mnemonicParsing="false" onAction="#CPUModelButtonClick" text="CPU Model" />
+            <MenuItem fx:id="colorButton" mnemonicParsing="false" onAction="#colorButtonClick" text="Color" />
+         </items>
+      </MenuButton>
+    </children>
 </AnchorPane>

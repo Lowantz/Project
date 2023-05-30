@@ -21,6 +21,7 @@ import model.user.user_types.Admin;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
@@ -230,42 +231,38 @@ public class AdminController {
         return null;
     }
 
-    public static String filterPrice(long min, long max) {
-        StringBuilder result = new StringBuilder();
+    public static ArrayList <Product> filterPrice(long min, long max) {
+        ArrayList <Product> products = new ArrayList<>();
         for (Product a : Admin.getProducts()) {
             if (a.getPrice() >= min && a.getPrice() <= max) {
-                result.append(a.toStringList());
-                result.append("\n");
+               products.add(a);
             }
-
         }
-        return result.toString();
+        return products;
     }
 
-    public static String filterAvailable() {
-        StringBuilder result = new StringBuilder();
+    public static ArrayList <Product> filterAvailable() {
+        ArrayList <Product> products = new ArrayList<>();
         for (Product a : Admin.getProducts()) {
             if (!(a.getAvailableProducts() == 0)) {
-                result.append(a.toStringList());
-                result.append("\n");
+                products.add(a);
             }
         }
-        return result.toString();
+        return products;
     }
 
-    public static String filterScore(long min, long max) {
-        StringBuilder result = new StringBuilder();
+    public static ArrayList <Product> filterScore(long min, long max) {
+        ArrayList <Product> products = new ArrayList<>();
         for (Product a : Admin.getProducts()) {
             if (a.getAverageScore() >= min && a.getAverageScore() <= max) {
-                result.append(a.toStringList());
-                result.append("\n");
+                products.add(a);
             }
         }
-        return result.toString();
+        return products;
     }
 
-    public static String filterType(String typeOfProduct) {
-        TypeOfProduct b = TypeOfProduct.DIGITAL;
+    public static ArrayList <Product> filterType(String typeOfProduct) {
+        TypeOfProduct b = TypeOfProduct.NONE;
         switch (typeOfProduct) {
             case "DIGITAL":
                 b = TypeOfProduct.DIGITAL;
@@ -280,40 +277,37 @@ public class AdminController {
                 b = TypeOfProduct.STATIONARY;
                 break;
         }
-        StringBuilder result = new StringBuilder();
+        ArrayList <Product> products = new ArrayList<>();
         for (Product a : Admin.getProducts()) {
             if (a.getTypeOfProduct() == b) {
-                result.append(a.toStringList());
-                result.append("\n");
+                products.add(a);
             }
         }
-        return result.toString();
+        return products;
     }
 
-    public static String filterCpu(String cpu) {
-        StringBuilder result = new StringBuilder();
+    public static ArrayList <Product> filterCpu(String cpu) {
+        ArrayList <Product> products = new ArrayList<>();
         for (Product a : Admin.getProducts()) {
             if (a instanceof PersonalComputer) {
                 if (((PersonalComputer) a).getCpuModel().equals(cpu)) {
-                    result.append(a.toStringList());
-                    result.append("\n");
+                    products.add(a);
                 }
             }
         }
-        return result.toString();
+        return products;
     }
 
-    public static String filterColor(String color) {
-        StringBuilder result = new StringBuilder();
+    public static ArrayList <Product> filterColor(String color) {
+        ArrayList <Product> products = new ArrayList<>();
         for (Product a : Admin.getProducts()) {
             if (a instanceof Pen) {
                 if (((Pen) a).getColor().equals(color)) {
-                    result.append(a.toStringList());
-                    result.append("\n");
+                    products.add(a);
                 }
             }
         }
-        return result.toString();
+        return products;
     }
 
     public static void score(int score, String Id) {
