@@ -37,7 +37,7 @@ public abstract class User {
 
     @Override
     public String toString() {
-        String string = "username:" + userName + " | email:" + email + " | phone:" + phone + " | pass:" + pass + " | roll:" + roll.toString() + " | ";
+        String string = "username : " + userName + "\nemail : " + email + "\nphone : " + phone + "\npass : " + pass + "\nroll : " + roll.toString();
         return string;
     }
     public void setEmail(String email){

@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginPageController implements Initializable {
+    public  static Costumer costumer;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -55,8 +56,9 @@ public class LoginPageController implements Initializable {
         Boolean loginStatus = false;
         for (Costumer a : CostumerController.getCostumers()) {
             if (a.getUserName().equals(username) && a.getPass().equals(pass)) {
+                costumer = a;
                 loginStatus = true;
-                Parent root = FXMLLoader.load(getClass().getResource("costumerView.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("costumerPage.fxml"));
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
@@ -73,5 +75,7 @@ public class LoginPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loginButton.setFocusTraversable(false);
+        passBuild.setFocusTraversable(false);
+        usernameBuild.setFocusTraversable(false);
     }
 }

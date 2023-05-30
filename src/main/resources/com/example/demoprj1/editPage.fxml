@@ -17,7 +17,7 @@
                 <Image url="@images/image0%20(1).jpeg" />
             </image>
         </ImageView>
-        <Button fx:id="signupButton" layoutX="108.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#signupButtonClick" prefHeight="30.0" prefWidth="81.0" text="Edit" textAlignment="RIGHT" textFill="#0f2862">
+        <Button fx:id="editButton" layoutX="108.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#editButtonClick" prefHeight="30.0" prefWidth="81.0" text="Edit" textAlignment="RIGHT" textFill="#0f2862">
             <font>
                 <Font name="Lucida Fax Demibold" size="15.0" />
             </font>
@@ -34,12 +34,12 @@
                 <Image url="@images/icons8-back-button-50.png" />
             </image>
         </ImageView>
-        <TextField fx:id="emailBuild" layoutX="75.0" layoutY="165.0" promptText="email" />
-        <TextField fx:id="phoneBuild" layoutX="75.0" layoutY="195.0" promptText="phone" />
-        <TextField fx:id="passBuild" layoutX="75.0" layoutY="225.0" promptText="pass" />
-        <Label layoutX="51.0" layoutY="85.0" text="Password must contain length of 8 characters&#10;and a maximum of 20 characters and at least :&#10;one digit [0-9]&#10;one lowercase Latin character [a-z]&#10;one uppercase Latin character [A-Z]&#10;one special character like ! @ # &amp; ( )" textAlignment="CENTER" textFill="#4f5f76">
+        <TextField fx:id="emailBuild" layoutX="75.0" layoutY="170.0" promptText="email" />
+        <TextField fx:id="phoneBuild" layoutX="75.0" layoutY="200.0" promptText="phone" />
+        <TextField fx:id="passBuild" layoutX="75.0" layoutY="230.0" promptText="pass" />
+        <Label fx:id="infoText" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="40.0" prefHeight="131.0" prefWidth="225.0" textAlignment="CENTER" textFill="#4f5f76">
             <font>
-                <Font name="Lucida Fax Demibold" size="8.0" />
+                <Font name="Lucida Fax Demibold" size="10.0" />
             </font>
         </Label>
     </children>

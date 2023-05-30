@@ -26,7 +26,7 @@ public class Costumer extends User {
 
     @Override
     public String toString() {
-        String string = super.toString() + "credit:" + credit;
+        String string = super.toString() + "\ncredit : " + credit;
         return string;
     }
     public ArrayList<DiscountCode> getDiscountCodes() {

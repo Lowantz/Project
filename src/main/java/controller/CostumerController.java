@@ -135,10 +135,10 @@ public class CostumerController {
                 if (matcher2.find()) {
                     for (Costumer costumer : CostumerController.getCostumers()) {
                         if (costumer.getEmail().equals(email)) {
-                            return "email is Repetitious\n";
+                            return "email is Repetitious";
                         }
                         if (costumer.getPhone().equals(phone)) {
-                            return "phone is Repetitious\n";
+                            return "phone is Repetitious";
 
                         }
                     }
@@ -188,13 +188,13 @@ public class CostumerController {
                 if (c) {
                     for (Costumer costumer : CostumerController.getCostumers()) {
                         if (costumer.getUserName().equals(username)) {
-                            return "user name is Repetitious\n";
+                            return "user name is Repetitious";
                         }
                         if (costumer.getEmail().equals(email)) {
-                            return "email is Repetitious\n";
+                            return "email is Repetitious";
                         }
                         if (costumer.getPhone().equals(phone)) {
-                            return "phone is Repetitious\n";
+                            return "phone is Repetitious";
                         }
                     }
                     return "signup done !";
