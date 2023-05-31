@@ -47,12 +47,12 @@ public class ProductPageController implements Initializable {
             if (result.equals("please signup first!")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "please signup first!");
                 alert.show();
+                productAfterSighup = product;
                 Parent root = FXMLLoader.load(getClass().getResource("sighupPage.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-                productAfterSighup = product;
             } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "add done!");
                 alert.show();
