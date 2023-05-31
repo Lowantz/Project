@@ -3,16 +3,14 @@ package controller;
 import model.Comment;
 import model.product.Product;
 
+import java.util.ArrayList;
+
 public class CommentController {
-    public static String viewComments(Product product) {
-        if (product.getComments() == null)
-            return "no comment!";
-        else {
-            StringBuilder result = new StringBuilder();
+    public static ArrayList <Comment> viewComments(Product product) {
+        ArrayList <Comment> comments = new ArrayList<>();
             for (Comment a : product.getComments()) {
-                result.append(a.toString());
+               comments.add(a);
             }
-            return result.toString();
+            return comments;
         }
-    }
 }

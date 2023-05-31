@@ -13,7 +13,7 @@ public class SSD extends SaveData {
 
     @Override
     public String toString() {
-        String string = super.toString() + "reading Speed:" + readingSpeed + " | writing Speed:" + writingSpeed;
+        String string = super.toString() + "\nreading Speed : " + readingSpeed + "\nwriting Speed : " + writingSpeed;
         return string;
     }
 }

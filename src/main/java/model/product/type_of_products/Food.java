@@ -16,7 +16,7 @@ public abstract class Food extends Product {
 
     @Override
     public String toString() {
-        String string = super.toString() + "date Of Manufacture:" + dateOfManufacture + " | expiration Date:" + expirationDate + " | ";
+        String string = super.toString() + "\ndate Of Manufacture : " + dateOfManufacture + "\nexpiration Date : " + expirationDate;
         return string;
     }
 }

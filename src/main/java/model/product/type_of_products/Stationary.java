@@ -13,7 +13,7 @@ public abstract class Stationary extends Product {
 
     @Override
     public String toString() {
-        String string = super.toString() + "country:" + country + " | ";
+        String string = super.toString() + "\ncountry : " + country;
         return string;
     }
 }

@@ -22,13 +22,12 @@ public class CostumerPageController implements Initializable {
     private Parent root;
 
     @FXML
-    private ImageView backButton;
-
-    @FXML
     private Button cartButton;
 
     @FXML
     private Button creditButton;
+    @FXML
+    private ImageView logoutButton;
 
     @FXML
     private Button discountButton;
@@ -48,15 +47,6 @@ public class CostumerPageController implements Initializable {
     }
 
     @FXML
-    void clickBackButton(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
     void creditButtonClick(MouseEvent event) {
 
     }
@@ -70,6 +60,17 @@ public class CostumerPageController implements Initializable {
     void historyButtonClick(MouseEvent event) {
 
     }
+
+    @FXML
+    void logoutButtonClick(MouseEvent event) throws IOException {
+        LoginPageController.costumer = null;
+        Parent root = FXMLLoader.load(getClass().getResource("startPage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
     @FXML
     void infoButtonClick(MouseEvent event) throws IOException {

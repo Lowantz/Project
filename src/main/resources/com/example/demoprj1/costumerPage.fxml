@@ -39,11 +39,6 @@
                 </DropShadow>
             </effect>
         </Button>
-      <ImageView fx:id="backButton" fitHeight="30.0" fitWidth="26.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#clickBackButton" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/icons8-back-button-50.png" />
-         </image>
-      </ImageView>
       <Button fx:id="historyButton" layoutX="81.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#historyButtonClick" prefHeight="30.0" prefWidth="137.0" text="History" textAlignment="RIGHT" textFill="#0f2862">
          <font>
             <Font name="Lucida Fax Demibold" size="15.0" />
@@ -76,6 +71,11 @@
       <ImageView fx:id="productsButton" fitHeight="30.0" fitWidth="30.0" layoutX="226.0" layoutY="22.0" onMouseClicked="#productsButtonClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/wired-lineal-139-basket.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="logoutButton" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="22.0" onMouseClicked="#logoutButtonClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/wired-lineal-1725-exit-sign.gif" />
          </image>
       </ImageView>
     </children>

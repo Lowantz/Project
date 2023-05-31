@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 public class ProductView {
     static Scanner sc = new Scanner(System.in);
-
     public static void view(Product product, Costumer costumer) {
         System.out.println(product.toString());
         Boolean menu = true;

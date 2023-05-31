@@ -26,7 +26,7 @@ public abstract class DigitalProduct extends Product implements DiscountAbility 
 
     @Override
     public String toString() {
-        String string = super.toString() + "weight:" + weight + " | dimensions:" + dimensions + " | ";
+        String string = super.toString() + "\nweight : " + weight + "\ndimensions : " + dimensions;
         return string;
     }
     @Override

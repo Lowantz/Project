@@ -18,7 +18,7 @@ public class PersonalComputer extends DigitalProduct {
 
     @Override
     public String toString() {
-        String string = super.toString() + "cpuModel:" + cpuModel + " | ram:" + ram;
+        String string = super.toString() + "\ncpuModel : " + cpuModel + "\nram : " + ram;
         return string;
     }
 }

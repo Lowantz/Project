@@ -9,7 +9,7 @@ public class Flash extends SaveData {
     }
     @Override
     public String toString () {
-        String string = super.toString()+"usb Version:"+usbVersion;
+        String string = super.toString()+"\nusb Version : "+usbVersion;
         return string;
     }
 }

@@ -13,7 +13,7 @@ public class NoteBook extends Stationary {
     }
     @Override
     public String toString () {
-        String string = super.toString()+"paperNumber:"+paperNumber+" | paperType:"+paperType;
+        String string = super.toString()+"\npaperNumber : "+paperNumber+"\npaperType : "+paperType;
         return string;
     }
 }

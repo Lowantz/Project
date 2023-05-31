@@ -13,7 +13,7 @@ public abstract class Vehicles extends Product {
 
     @Override
     public String toString() {
-        String string = super.toString() + "company Name:" + companyName + " | ";
+        String string = super.toString() + "\ncompany Name : " + companyName;
         return string;
     }
 }

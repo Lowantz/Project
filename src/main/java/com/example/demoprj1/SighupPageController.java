@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SighupPageController implements Initializable {
+    public static Costumer costumer;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -73,7 +74,8 @@ public class SighupPageController implements Initializable {
                 a = CostumerController.dataCheck(username, email, phone, pass);
                 switch (a) {
                     case "signup done !" :
-                        Request request = new Request(RequestType.Signup, CostumerController.addCostumers(username, email, phone, pass));
+                        costumer = CostumerController.addCostumers(username, email, phone, pass);
+                        Request request = new Request(RequestType.Signup, costumer);
                         Admin.getRequests().add(request);
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "signup done !" +
                                 " your request is sent to admin." +

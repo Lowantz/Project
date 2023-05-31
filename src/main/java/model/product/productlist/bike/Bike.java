@@ -12,7 +12,7 @@ public class Bike extends Vehicles {
 
     @Override
     public String toString() {
-        String string = super.toString() + "bikeType:" + bikeType.toString();
+        String string = super.toString() + "\nbikeType : " + bikeType.toString();
         return string;
     }
 }

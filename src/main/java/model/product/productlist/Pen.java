@@ -27,7 +27,7 @@ public class Pen extends Stationary implements DiscountAbility {
 
     @Override
     public String toString() {
-        String string = super.toString() + "color:" + color;
+        String string = super.toString() + "\ncolor : " + color;
         return string;
     }
     @Override

@@ -12,7 +12,7 @@ public abstract class SaveData extends DigitalProduct {
 
     @Override
     public String toString() {
-        String string = super.toString() + "capacity:" + capacity;
+        String string = super.toString() + "\ncapacity : " + capacity;
         return string;
     }
 }

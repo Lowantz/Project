@@ -104,7 +104,7 @@ public abstract class Product implements Comparable{
 
     @Override
     public String toString() {
-        String string = "ID:" + Id + " | name:" + name + " | price:" + price + " | available:" + available.toString() + " | averageScore:" + averageScore + " | Type :" + typeOfProduct + " | ";
+        String string = "ID : " + Id + "\nname : " + name + "\nprice : " + price + "\navailable : " + available.toString() + "\naverageScore : " + averageScore + "\nType : " + typeOfProduct;
         return string;
     }
 

@@ -22,7 +22,7 @@ public class Pencil extends Stationary implements DiscountAbility {
     }
     @Override
     public String toString () {
-        String string = super.toString()+"pencil Type:"+pencilType.toString();
+        String string = super.toString()+"\npencil Type : "+pencilType.toString();
         return string;
     }
     @Override

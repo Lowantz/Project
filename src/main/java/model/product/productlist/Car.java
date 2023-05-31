@@ -14,7 +14,7 @@ public class Car extends Vehicles {
 
     @Override
     public String toString() {
-        String string = super.toString() + "auto:" + auto.toString() + " | capacity Of Car Engine:" + capacityOfCarEngine;
+        String string = super.toString() + "\nauto : " + auto.toString() + "\ncapacity Of Car Engine : " + capacityOfCarEngine;
         return string;
     }
 }
