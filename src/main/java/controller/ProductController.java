@@ -21,7 +21,7 @@ public class ProductController {
                 Admin.getRequests().add(request);
                 return "comment added!";
             } else {
-                return "you should buy this product first 1 !";
+                return "you should buy this product first !";
             }
         }
     }

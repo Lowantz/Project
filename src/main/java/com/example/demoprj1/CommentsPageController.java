@@ -44,16 +44,27 @@ public class CommentsPageController implements Initializable {
 
 
     @FXML
-    void addButtonClick(MouseEvent event) {
+    void addButtonClick(MouseEvent event) throws IOException {
         String string = text.getText();
-       String result =  ProductController.comment(string, costumer, product);
-       if (result.equals("you should buy this product first !")){
-           Alert alert = new Alert(Alert.AlertType.ERROR, "you should buy this product first !");
-           alert.show();
-       }else {
-           Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "comment added!");
-           alert.show();
-       }
+        if (string.equals("")){
+            Alert alert6 = new Alert(Alert.AlertType.ERROR, "Write Something First!");
+            alert6.show();
+        }
+        else {
+            String result = ProductController.comment(string, costumer, product);
+            if (result.equals("you should buy this product first !")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "you should buy this product first !");
+                alert.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "comment added!");
+                alert.show();
+                Parent root = FXMLLoader.load(getClass().getResource("commentsPage.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        }
     }
 
     @FXML
@@ -68,7 +79,11 @@ public class CommentsPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         costumer = LoginPageController.costumer;
-        product = ProductsPageController.product1;
+        if (this.costumer == null) {
+            this.product = ProductsPageController.product1;
+        } else {
+            this.product = ProductsPageLoginController.product1;
+        }
         ArrayList<Comment> comments = CommentController.viewComments(product);
         for (Comment a : comments) {
             commentList.getItems().add(a.toString());

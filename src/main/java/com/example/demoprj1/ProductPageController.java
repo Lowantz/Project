@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 
 public class ProductPageController implements Initializable {
     private Costumer costumer;
-    private Costumer costumerAfterSignup;
     private Product product;
+    public static Product productAfterSighup;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -52,7 +52,7 @@ public class ProductPageController implements Initializable {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-                CostumerController.addProduct(costumerAfterSignup, product);
+                productAfterSighup = product;
             } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "add done!");
                 alert.show();
@@ -67,11 +67,19 @@ public class ProductPageController implements Initializable {
 
     @FXML
     void clickBackButton(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("productsPage.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (this.costumer == null) {
+            Parent root = FXMLLoader.load(getClass().getResource("productsPage.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("productsPageLogin.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML
@@ -85,10 +93,14 @@ public class ProductPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        product = ProductsPageController.product1;
-        infoText.setText(product.toString());
         costumer = LoginPageController.costumer;
-        costumerAfterSignup = SighupPageController.costumer;
+        if (this.costumer == null) {
+            product = ProductsPageController.product1;
+            infoText.setText(product.toString());
+        } else {
+            product = ProductsPageLoginController.product1;
+            infoText.setText(product.toString());
+        }
         addButton.setFocusTraversable(false);
         commentsButton.setFocusTraversable(false);
     }

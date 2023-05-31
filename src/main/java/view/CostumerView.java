@@ -74,7 +74,7 @@ public class CostumerView {
                                         price = CostumerController.calculatePay(costumer);
                                     } else if (a == 1) {
                                         price = CostumerController.calculatePay(costumer);
-                                        System.out.println("how many codes you want to use?");
+                                        System.out.println("how many codes you want to use ?");
                                         int b = sc.nextInt();
                                         sc.nextLine();
                                         System.out.println("enter the codes!");

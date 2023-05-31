@@ -19,7 +19,7 @@ public class Comment {
 
     @Override
     public String toString() {
-        String a = costumer.getUserName() + " : " + text + "\n";
+        String a = costumer.getUserName() + " : " + text;
         return a;
     }
 

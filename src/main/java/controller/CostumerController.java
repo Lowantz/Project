@@ -96,7 +96,7 @@ public class CostumerController {
 
     public static String buy(Costumer costumer, long price) throws NoEnoughCredit {
         if (costumer.getToBuyList().size() == 0) {
-            return "Purchase List is empty!";
+            return "Your cart is empty!";
         } else {
             if (price <= costumer.getCredit()) {
                 PurchaseList purchaseList = new PurchaseList("1402/02/23", price);

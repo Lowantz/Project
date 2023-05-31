@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.exception.WrongEmail;
 import model.exception.WrongPhone;
+import model.product.Product;
 import model.user.Request;
 import model.user.RequestType;
 import model.user.user_types.Admin;
@@ -26,6 +27,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SighupPageController implements Initializable {
+    private Product product;
     public static Costumer costumer;
     private Stage stage;
     private Scene scene;
@@ -75,6 +77,11 @@ public class SighupPageController implements Initializable {
                 switch (a) {
                     case "signup done !" :
                         costumer = CostumerController.addCostumers(username, email, phone, pass);
+                        if (!(product == null)){
+                            costumer.getToBuyList().add(product);
+                            product = null;
+                            ProductPageController.productAfterSighup = null;
+                        }
                         Request request = new Request(RequestType.Signup, costumer);
                         Admin.getRequests().add(request);
                         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "signup done !" +
@@ -115,6 +122,7 @@ public class SighupPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        product = ProductPageController.productAfterSighup;
         signupButton.setFocusTraversable(false);
         emailBuild.setFocusTraversable(false);
         passBuild.setFocusTraversable(false);
