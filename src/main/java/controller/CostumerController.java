@@ -24,7 +24,7 @@ public class CostumerController {
 
     public static void giveDiscount(DiscountCode discountCode) {
         for (Costumer costumer : costumers) {
-            if (costumer.getPurchasedProducts().size() >= 3) {
+            if (costumer.getPurchasedProducts().size() >= 2) {
                 costumer.getDiscountCodes().add(discountCode);
             }
         }
