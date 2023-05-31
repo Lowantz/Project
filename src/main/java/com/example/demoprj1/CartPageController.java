@@ -91,6 +91,7 @@ public class CartPageController implements Initializable {
         try {
             long price1 = CostumerController.addDiscount(code, price, costumer);
             this.price = price1;
+            bill.setText("your bill is : " + price1);
         } catch (WrongDiscountCode discountCode) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Wrong Discount Code!");
             alert.show();

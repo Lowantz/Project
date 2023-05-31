@@ -42,13 +42,13 @@ public class HistoryPageController implements Initializable {
     @FXML
     void scoreButtonClick(MouseEvent event) throws IOException {
         String command = score.getText();
-        String[] parts = command.split("-");
+        String[] parts = command.split("/");
         if (parts[0].equals("") || parts[1].equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter price range!");
             alert.show();
         } else {
-            int score = Integer.parseInt(parts[0]);
-            String id = parts[1];
+            int score = Integer.parseInt(parts[1]);
+            String id = parts[0];
             AdminController.score(score, id);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Score Added!");
             alert.show();
@@ -74,7 +74,9 @@ public class HistoryPageController implements Initializable {
         costumer = LoginPageController.costumer;
         for (PurchaseList a : costumer.getHistoryBuyList()) {
             for (Product b : a.getPurchasedProducts()) {
-                purchasedProductsList.getItems().add(b.toStringList());
+                if (!(purchasedProductsList.getItems().contains(b.toString()))) {
+                    purchasedProductsList.getItems().add(b.toString());
+                }
             }
         }
         score.setFocusTraversable(false);

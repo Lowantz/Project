@@ -60,13 +60,21 @@ public class CostumerPageController implements Initializable {
     }
 
     @FXML
-    void discountButtonClick(MouseEvent event) {
-
+    void discountButtonClick(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("discountCodePage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void historyButtonClick(MouseEvent event) {
-
+    void historyButtonClick(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("historyPage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

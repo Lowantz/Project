@@ -64,33 +64,30 @@ public class CostumerController {
         return price;
     }
 
-    public static long addDiscount(String discountCode,long price,Costumer costumer) throws WrongDiscountCode {
+    public static long addDiscount(String discountCode, long price, Costumer costumer) throws WrongDiscountCode {
         Boolean bool = false;
         long price1 = 0;
         DiscountCode discountCode1 = null;
-        for (DiscountCode a : costumer.getDiscountCodes()){
+        for (DiscountCode a : costumer.getDiscountCodes()) {
             if (a.getDiscountCode().equals(discountCode)) {
                 discountCode1 = a;
                 bool = true;
                 break;
             }
         }
-        if (bool){
-            if (discountCode1.getDiscountCapacityCount()<discountCode1.getDiscountCapacity()){
-                if (true/*discountCode1.getDiscountCredit() == LocalDate.EPOCH*/){
+        if (bool) {
+            if (discountCode1.getDiscountCapacityCount() < discountCode1.getDiscountCapacity()) {
+                if (true/*discountCode1.getDiscountCredit() == LocalDate.EPOCH*/) {
                     price1 = (long) (price * discountCode1.getDiscountPercent() / 100);
-                   int c = discountCode1.getDiscountCapacityCount();
-                   discountCode1.setDiscountCapacityCount(c+1);
-                   costumer.getDiscountCodes().remove(discountCode1);
+                    int c = discountCode1.getDiscountCapacityCount();
+                    discountCode1.setDiscountCapacityCount(c + 1);
+                    costumer.getDiscountCodes().remove(discountCode1);
                     return price1;
-                }
-                else
+                } else
                     throw new WrongDiscountCode();
-            }
-            else
+            } else
                 throw new WrongDiscountCode();
-        }
-        else
+        } else
             throw new WrongDiscountCode();
     }
 
@@ -103,8 +100,8 @@ public class CostumerController {
                 long remaining = costumer.getCredit() - price;
                 costumer.setCredit(remaining);
                 for (Product a : costumer.getToBuyList()) {
-                        costumer.getPurchasedProducts().add(a);
-                        purchaseList.getPurchasedProducts().add(a);
+                    costumer.getPurchasedProducts().add(a);
+                    purchaseList.getPurchasedProducts().add(a);
                 }
                 costumer.getToBuyList().clear();
                 costumer.getHistoryBuyList().add(purchaseList);
@@ -201,8 +198,8 @@ public class CostumerController {
                 } else
                     return "invalid pass !";
             } else
-               throw new WrongPhone();
+                throw new WrongPhone();
         } else
-          throw new WrongEmail();
+            throw new WrongEmail();
     }
 }

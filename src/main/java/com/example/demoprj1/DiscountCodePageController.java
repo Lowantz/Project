@@ -46,5 +46,6 @@ public class DiscountCodePageController implements Initializable {
         for (DiscountCode a : costumer.getDiscountCodes()) {
            codesList.getItems().add(a.getDiscountCode());
         }
+        codesList.setFocusTraversable(false);
     }
 }
