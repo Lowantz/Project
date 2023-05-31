@@ -30,16 +30,13 @@ public class ProductPageController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     @FXML
     private Button addButton;
 
     @FXML
     private ImageView backButton;
-
     @FXML
     private Button commentsButton;
-
     @FXML
     private Label infoText;
 
@@ -56,8 +53,7 @@ public class ProductPageController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
                 CostumerController.addProduct(costumerAfterSignup, product);
-            }
-            else {
+            } else {
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "add done!");
                 alert.show();
             }
