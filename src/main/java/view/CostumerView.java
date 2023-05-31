@@ -150,7 +150,6 @@ public class CostumerView {
                                     bool2 = false;
                                     break;
                             }
-
                         }
                         break;
                     case 6:
